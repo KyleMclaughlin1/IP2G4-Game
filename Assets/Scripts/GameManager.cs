@@ -1,6 +1,7 @@
 using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
+using UnityEngine.SceneManagement;
 
 public class GameManager : MonoBehaviour
 {
@@ -12,12 +13,17 @@ public class GameManager : MonoBehaviour
     [field: Header("Menus")]
     public GameObject gameOverScreen;
     public GameObject pauseMenu;
+    public GameObject pauseMainMenu;
+    public GameObject pauseSettingsManu;
+    public GameObject exitCheck;
     private bool isPaused = false;
 
     void Awake()
     {
         gameOverScreen.gameObject.SetActive(false);
         pauseMenu.gameObject.SetActive(false);
+        exitCheck.gameObject.SetActive(false);
+        pauseSettingsManu.gameObject.SetActive(false);
 
         if (gameManager != null && gameManager != this)
         {
@@ -38,7 +44,7 @@ public class GameManager : MonoBehaviour
         }
 
         //pause Game
-        if (Input.GetKeyDown(KeyCode.P))
+        if (Input.GetKeyDown(KeyCode.P) & GameObject.FindWithTag("Player") != null)
         {
             pauseMenu.gameObject.SetActive(!isPaused);
             isPaused = !isPaused;
@@ -46,4 +52,58 @@ public class GameManager : MonoBehaviour
         }
     }
 
+    public void resumeGame()
+    {
+        pauseMenu.gameObject.SetActive(false);
+        isPaused = false;
+        Time.timeScale = 1f;
+    }
+
+    public void openSettingsInPause()
+    {
+        pauseMainMenu.gameObject.SetActive(false);
+        pauseSettingsManu.gameObject.SetActive(true);
+    }
+
+    public void exitToMenuCheck()
+    {
+        pauseMainMenu.gameObject.SetActive(false);
+        exitCheck.gameObject.SetActive(true);
+    }
+
+    public void exitToMenuYes()
+    {
+        SceneManager.LoadScene("MenuScene");
+    }
+
+    public void exitToMenuNo()
+    {
+        exitCheck.gameObject.SetActive(false);
+        pauseMainMenu.gameObject.SetActive(true);
+    }
+
+    public void fullScreenChange()
+    {
+        if (Screen.fullScreen == false)
+        {
+            Screen.fullScreen = true;
+            Debug.Log("went fullscreen");
+        }
+        else if (Screen.fullScreen == true)
+        {
+            Screen.fullScreen = false;
+            Debug.Log("went windowed");
+        }
+    }
+
+    public void backToPause()
+    {
+        pauseSettingsManu.gameObject.SetActive(false);
+        pauseMainMenu.gameObject.SetActive(true);
+    }
+
+    public void retryGame()
+    {
+        SceneManager.LoadScene("InGame");
+    }
 }
