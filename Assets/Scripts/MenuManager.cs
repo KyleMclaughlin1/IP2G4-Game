@@ -5,57 +5,78 @@ using UnityEngine.SceneManagement;
 
 public class MenuManager : MonoBehaviour
 {
-
+    // declaring variables
     public GameObject mainButtons;
     public GameObject settingsButtons;
     public GameObject howToPlayUi;
 
     void Start()
     {
+        // disables the settings part of the menu so it dosn't overlap with the main menu
         settingsButtons.SetActive(false);
+        // disables the how to play part of the menu so it dosn't overlap with the main menu
         howToPlayUi.SetActive(false);
     }
 
+    // method for when the start button is pressed
     public void startGame()
     {
+        // loads the scene with the main game inside
         SceneManager.LoadScene("InGame");
     }
 
+    // method for when the quit button is pressed
     public void exitGame()
     {
+        // exits the game
         Application.Quit();
     }
 
+    //method for the settings part of the menu
     public void openSettings()
     {
+        // disables the main menu ui and enables the settings part of the ui
         mainButtons.gameObject.SetActive(false);
         settingsButtons.gameObject.SetActive(true);
         howToPlayUi.SetActive(false);
     }
 
+    // method for the fullscreen or windowed dropdown
     public void fullScreenChange()
     {
+        // checks if the screen is not in fullscreen
         if(Screen.fullScreen == false)
         {
+            // sets the screen to fullscreen
             Screen.fullScreen = true;
+            // logs this to check if it works
             Debug.Log("went fullscreen");
         }
+        // checks if the screen is in fullscreen
         else if(Screen.fullScreen == true)
         {
+            // sets the game to windowed 
             Screen.fullScreen = false;
+            // logs this to check if it works
             Debug.Log("went windowed");
         }
     }
 
+    // method for going back to the main menu
     public void returnToMainMenu()
     {
+        // disables the how to play and settings menu ui
+        // enables the main menu ui
         settingsButtons.gameObject.SetActive(false);
         mainButtons.gameObject.SetActive(true);
         howToPlayUi.SetActive(false);
     }
 
+    // method for when the player presses the how to play button
     public void howToPlayMenu()
     {
+        // disables the main menu and the settings menu ui
+        // enables the how to play menu ui
         mainButtons.gameObject.SetActive(false);
         settingsButtons.gameObject.SetActive(false);
         howToPlayUi.gameObject.SetActive(true);    
