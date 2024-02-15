@@ -1,9 +1,12 @@
 using System.Collections;
 using System.Collections.Generic;
+using Unity.VisualScripting;
 using UnityEngine;
 
 public class TankMovement : MonoBehaviour
-{ 
+{
+
+    [Header("Speed")]
     [SerializeField]
     [Tooltip("How fast the tank is currently moving, not to be edited")]
     private float tankSpeed = 0f;
@@ -18,7 +21,21 @@ public class TankMovement : MonoBehaviour
     [Tooltip("How fast the tank turns")]
     public float turnSpeed = 45f;
 
+    [Header("Effects")]
+    [Tooltip("Lowest speed for dust particles to appear")]
+    public float minDustSpeed;
+    [Tooltip("Speed at which dust particles reach max size")]
+    public float maxDustSpeed;
+    [Tooltip("Rate at which dust particles are spawned")]
+    public float dustSpawnRate;
 
+    private float dustTimer;
+    //Tracks dust spawn rate
+
+    [Tooltip("Object reference to dust effect")]
+    public GameObject dustObject;
+
+    [Header("Input")]
     [Tooltip("What range to consider input from a input axis as no input (some controllers may default to 0.1 instead of 0")] 
     public float axisDeadZone = 0.3f;
 
@@ -68,7 +85,13 @@ public class TankMovement : MonoBehaviour
         tankSpeed = Mathf.Clamp(tankSpeed, 0, maxSpeed);
         //Limit tank from exceeding max speed
 
-        rb.velocity = transform.forward * tankSpeed * Time.deltaTime;
+        if(tankSpeed > minDustSpeed)
+        {
+
+        }
+
+
+        rb.velocity = transform.forward * tankSpeed;
         //Set forward velocity to tankSpeed
 
     }
