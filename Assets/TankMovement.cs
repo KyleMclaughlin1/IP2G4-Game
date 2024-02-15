@@ -85,14 +85,29 @@ public class TankMovement : MonoBehaviour
         tankSpeed = Mathf.Clamp(tankSpeed, 0, maxSpeed);
         //Limit tank from exceeding max speed
 
-        if(tankSpeed > minDustSpeed)
+        if(tankSpeed > minDustSpeed) //If tank is moving fast enough to spawn dust particles
         {
+            dustTimer -= Time.deltaTime;
+            //Decrease dust Timer by time
+            
+            if(dustTimer <= 0f){
+                dustTimer = dustSpawnRate;
+                //Reset spawn timer
+                GameObject dustPar = Instantiate(dustObject);
+                //Spawn dust cloud
+                dustPar.transform.position = transform.position; 
+                //set dust cloud location to tank location
+                if(dustPar.GetComponent<ObjectShrink>()){
+                    dustPar.GetComponent<ObjectShrink>().startScale = Mathf.InverseLerp(minDustSpeed,maxDustSpeed, tankSpeed);
+                    //Sends starting scale value to object shrink script if the dust particles uses that script
+                }
+            }
 
         }
 
 
         rb.velocity = transform.forward * tankSpeed;
-        //Set forward velocity to tankSpeed
+        //Set forward velocity to tankSpeed 
 
     }
 }
