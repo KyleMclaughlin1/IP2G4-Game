@@ -49,7 +49,7 @@ public class CannonControl : MonoBehaviour
             {
                 //Fire bullet on mouse click
 
-                GameObject newBullet = Instantiate(bullet, firePoint.position, transform.rotation);
+                GameObject newBullet = Instantiate(bullet, firePoint.transform.position, firePoint.transform.rotation);
                 newBullet.transform.Rotate(Vector3.forward * 90);
                 //face the bullet sideways instead of upwards
                 newBullet.transform.Rotate(Vector3.right * 90);
