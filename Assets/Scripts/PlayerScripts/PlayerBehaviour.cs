@@ -43,4 +43,13 @@ public class PlayerBehaviour : MonoBehaviour
         GameManager.gameManager.playerHealth.HealUnit(Healing);
         Debug.Log(GameManager.gameManager.playerHealth.Health);
     }
+
+    void OnCollisionEnter(Collision other)
+    {
+        // take damage if the player gats hit by an enemy
+        if (other.gameObject.CompareTag("enemy"))
+        {
+            PlayerHit(2);
+        }
+    }
 }
