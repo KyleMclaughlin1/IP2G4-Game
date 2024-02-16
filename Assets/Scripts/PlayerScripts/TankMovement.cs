@@ -95,12 +95,14 @@ public class TankMovement : MonoBehaviour
                 //Reset spawn timer
                 GameObject dustPar = Instantiate(dustObject);
                 //Spawn dust cloud
-                dustPar.transform.position = transform.position; 
-                //set dust cloud location to tank location
+
                 if(dustPar.GetComponent<ObjectShrink>()){
                     dustPar.GetComponent<ObjectShrink>().startScale = Mathf.InverseLerp(minDustSpeed,maxDustSpeed, tankSpeed);
                     //Sends starting scale value to object shrink script if the dust particles uses that script
                 }
+
+                dustPar.transform.position = transform.position; 
+                //set dust cloud location to tank location
             }
 
         }

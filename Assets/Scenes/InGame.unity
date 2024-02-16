@@ -4564,9 +4564,9 @@ MonoBehaviour:
   deccelRate: 15
   decayRate: 5
   turnSpeed: 90
-  minDustSpeed: 0
-  maxDustSpeed: 0
-  dustSpawnRate: 0
+  minDustSpeed: 200
+  maxDustSpeed: 300
+  dustSpawnRate: 1
   dustObject: {fileID: 3731175834095364177, guid: 8d13cf1c312cb1b48a64d3f4c3206fa3, type: 3}
   axisDeadZone: 0.3
 --- !u!4 &1504214244

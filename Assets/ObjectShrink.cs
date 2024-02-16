@@ -14,7 +14,9 @@ public class ObjectShrink : MonoBehaviour
 
 void Start(){
     scale = transform.localScale.x * startScale;
-    //Decrease object scale through value given by the script that spawned it 
+    //Decrease object scale through value given by the script that spawned it
+
+    GetComponent<Renderer>().enabled = true; 
 }
 
     void Update()
