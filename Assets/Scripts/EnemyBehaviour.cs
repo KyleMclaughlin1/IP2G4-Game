@@ -4,8 +4,17 @@ using UnityEngine;
 
 public class EnemyBehaviour : MonoBehaviour
 {
-    public HealthSystem healthSystem = new HealthSystem(5, 5);
+    [SerializeField]
+    [Tooltip("How much health the enemy starts with")]
+    private int startHealth = 5;
     
+    public HealthSystem healthSystem;
+    
+    void Awake(){
+         healthSystem = new HealthSystem(startHealth, startHealth);
+    }
+
+
     // Update is called once per frame
     void Update()
     {
