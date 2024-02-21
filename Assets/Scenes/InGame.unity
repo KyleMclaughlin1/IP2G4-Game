@@ -640,7 +640,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: d4990c0bfa79cbf429479ae324878c56, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  usingGamePad: 0
+  usingGamePad: 1
   firePoint: {fileID: 2147450425}
   bullet: {fileID: 4058033927468218710, guid: b865f34d10f2b45448108425e192f776, type: 3}
   cannonAuto: 0

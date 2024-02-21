@@ -23,7 +23,8 @@ public class CannonControl : MonoBehaviour
     public float fireRate = 1f;
 
     private float fireTimer = 0f; //Timer for fire rate;
-    
+
+    private Vector3 gpAngle; //Gamepad variable for rotation
 
 
     void Update()
@@ -36,10 +37,48 @@ public class CannonControl : MonoBehaviour
         {
             //  Vector3 angle = new Vector3(0, (Input.GetAxis("Horizontal") * 180) + (Input.GetAxis("Vertical") * 90), 0);//Mathf.Atan2(Input.GetAxis("R_Vertical"),Input.GetAxis("R_Horizontal")) * Mathf.Rad2Deg;
 
-            Vector3 angle = Vector3.right * Input.GetAxis("Horizontal") + Vector3.forward * Input.GetAxis("Vertical");
-            angle.y -= 90f;
 
-            //transform.rotation = Quaternion.RotateTowards(transform.rotation, )
+            float x_Inpt = Input.GetAxis("R_Horizontal");
+            float y_Inpt = Input.GetAxis("R_Vertical");
+            //Store input in a variable, for code readability
+
+            if (x_Inpt >  0.3f || x_Inpt < -0.3f) {
+
+                gpAngle = Vector3.right * -x_Inpt + Vector3.forward * -y_Inpt;
+                // Get a vector direction by multiplying right and forward vector values by right stick axis input
+
+                Quaternion newRotation = Quaternion.LookRotation(gpAngle, Vector3.up);
+                //Turn that direction into a rotation
+
+                transform.rotation = Quaternion.RotateTowards(transform.rotation, newRotation, 90);
+                //Set cannon rotation to our new rotation
+
+            }
+
+            if (Input.GetButtonDown("Fire1"))
+            {
+                //Fire bullet on mouse click, or mouse hold if auto firing cannon is turned on 
+
+                GameObject newBullet = Instantiate(bullet, firePoint.transform.position, firePoint.transform.rotation);
+                newBullet.transform.Rotate(Vector3.forward * 90);
+                //face the bullet sideways instead of upwards
+                newBullet.transform.Rotate(Vector3.right * 90);
+                //fix the angle to work with the cannon defaulting upwards again
+                if (newBullet.GetComponent<BulletBehaviour>())
+                {
+                    newBullet.GetComponent<BulletBehaviour>().bulletDamage *= bulletDamageMultiplier;
+                    //If the chosen bullet has the bullet behaviour script, multiply its damage by the tanks
+                }
+
+
+
+                fireTimer = fireRate;
+                //Set firetimer to firerate so the player cannot fire again until the firerate time passes
+
+            }
+
+            fireTimer -= Time.deltaTime;
+            //Decrease firetimer by time to allow for shot reload
         }
         else
         {
