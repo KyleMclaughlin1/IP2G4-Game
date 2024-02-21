@@ -67,7 +67,7 @@ public class Enemymovement : MonoBehaviour
 
         walkPoint = new Vector3(transform.position.x + RandomX, transform.position.y, transform.position.z + RandomZ);
 
-        if (Physics.Raycast(walkPoint, -transform.up, whatIsGround))
+        if (Physics.Raycast(walkPoint, -transform.up, 2f, whatIsGround))
             walkPointSet = true;
     }
 
