@@ -9,6 +9,8 @@ public class BulletBehaviour : MonoBehaviour
     public float bulletSpeed;
     [Tooltip("How long it takes for the bullet to be despawned")]
     public float bulletLife;
+    [Tooltip("Bullet damage")]
+    public int bulletDamage = 1;
 
     // Update is called once per frame
     void Update()

@@ -18,7 +18,7 @@ public class EnemyBehaviour : MonoBehaviour
     // Update is called once per frame
     void Update()
     {
-        if(healthSystem.currentHealth == 0)
+        if(healthSystem.currentHealth <= 0)
         {
             Destroy(gameObject);
         }
@@ -35,7 +35,14 @@ public class EnemyBehaviour : MonoBehaviour
         // take damage if the player gats hit by an enemy
         if (other.gameObject.CompareTag("bullet"))
         {
-            Hit(1);
+            if (other.gameObject.GetComponent<BulletBehaviour>())
+            {
+                Hit(other.gameObject.GetComponent<BulletBehaviour>().bulletDamage);
+            }
+            else
+            {
+                Hit(1);
+            }
         }
     }
 }
