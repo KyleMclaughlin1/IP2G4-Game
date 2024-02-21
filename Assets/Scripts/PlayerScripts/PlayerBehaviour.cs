@@ -66,4 +66,9 @@ public class PlayerBehaviour : MonoBehaviour
         yield return new WaitForSeconds(15);
         bullet.bulletDamageMultiplier = bullet.bulletDamageMultiplier - 1;
     }
+
+    public void healthIncrease()
+    {
+        PlayerHeal(1);
+    }
 }

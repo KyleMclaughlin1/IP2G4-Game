@@ -9,6 +9,9 @@ public class EnemyBehaviour : MonoBehaviour
     private int startHealth = 5;
     
     public HealthSystem healthSystem;
+    public GameObject dmgBuffDrop;
+    public GameObject healthUpDrop;
+    public float randomNum;
     
     void Awake(){
          healthSystem = new HealthSystem(startHealth, startHealth);
@@ -18,9 +21,11 @@ public class EnemyBehaviour : MonoBehaviour
     // Update is called once per frame
     void Update()
     {
+
         if(healthSystem.currentHealth <= 0)
         {
             Destroy(gameObject);
+            dropBuff();
         }
     }
 
@@ -43,6 +48,21 @@ public class EnemyBehaviour : MonoBehaviour
             {
                 Hit(1);
             }
+        }
+    }
+
+    public void dropBuff()
+    {
+        randomNum = Random.Range(1, 3);
+        Debug.Log(randomNum);
+        Vector3 position = transform.position;
+        if (randomNum == 2f)
+        {
+            GameObject dmgUp = Instantiate(dmgBuffDrop, position, Quaternion.identity);
+        }
+        if (randomNum == 3f)
+        {
+            GameObject hpUp = Instantiate(healthUpDrop, position, Quaternion.identity);
         }
     }
 }
