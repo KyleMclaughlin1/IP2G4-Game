@@ -32,7 +32,7 @@ public class EnemyBehaviour : MonoBehaviour
 
     void OnCollisionEnter(Collision other)
     {
-        // take damage if the player gats hit by an enemy
+        // take damage if the player gets hit by an enemy
         if (other.gameObject.CompareTag("bullet"))
         {
             if (other.gameObject.GetComponent<BulletBehaviour>())

@@ -5,9 +5,11 @@ using UnityEngine;
 public class PlayerBehaviour : MonoBehaviour
 {
 
+    public CannonControl bullet;
+
     void Start()
     {
-        
+
     }
 
     void Update()
@@ -51,5 +53,17 @@ public class PlayerBehaviour : MonoBehaviour
         {
             PlayerHit(2);
         }
+    }
+
+    public void increaseDamage()
+    {
+        bullet.bulletDamageMultiplier = bullet.bulletDamageMultiplier + 1;
+        StartCoroutine(buffTimer());
+        bullet.bulletDamageMultiplier = bullet.bulletDamageMultiplier - 1;
+    }
+
+    IEnumerator buffTimer()
+    {
+        yield return new WaitForSeconds(15);
     }
 }
