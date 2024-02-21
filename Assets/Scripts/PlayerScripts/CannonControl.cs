@@ -34,10 +34,12 @@ public class CannonControl : MonoBehaviour
 
         if (usingGamePad)
         {
-            float angle = Mathf.Atan2(Input.GetAxis("Horizontal"), Input.GetAxis("Vertical"));
-            angle -= 90f;
+            //  Vector3 angle = new Vector3(0, (Input.GetAxis("Horizontal") * 180) + (Input.GetAxis("Vertical") * 90), 0);//Mathf.Atan2(Input.GetAxis("R_Vertical"),Input.GetAxis("R_Horizontal")) * Mathf.Rad2Deg;
 
-            transform.rotation = Quaternion.Euler(new Vector3(0, -angle, 0));
+            Vector3 angle = Vector3.right * Input.GetAxis("Horizontal") + Vector3.forward * Input.GetAxis("Vertical");
+            angle.y -= 90f;
+
+            //transform.rotation = Quaternion.RotateTowards(transform.rotation, )
         }
         else
         {

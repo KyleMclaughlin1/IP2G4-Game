@@ -59,11 +59,11 @@ public class PlayerBehaviour : MonoBehaviour
     {
         bullet.bulletDamageMultiplier = bullet.bulletDamageMultiplier + 1;
         StartCoroutine(buffTimer());
-        bullet.bulletDamageMultiplier = bullet.bulletDamageMultiplier - 1;
     }
 
     IEnumerator buffTimer()
     {
         yield return new WaitForSeconds(15);
+        bullet.bulletDamageMultiplier = bullet.bulletDamageMultiplier - 1;
     }
 }
