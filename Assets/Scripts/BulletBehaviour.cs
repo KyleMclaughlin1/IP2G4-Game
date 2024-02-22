@@ -11,6 +11,8 @@ public class BulletBehaviour : MonoBehaviour
     public float bulletLife;
     [Tooltip("Bullet damage")]
     public int bulletDamage = 1;
+    [Tooltip("Bullet hit animation")]
+    public GameObject hitAnim;
 
     // Update is called once per frame
     void Update()
@@ -24,10 +26,10 @@ public class BulletBehaviour : MonoBehaviour
     // Destroy bullet on impact
     void OnCollisionEnter(Collision other)
     {
-        if (other.gameObject.CompareTag("enemy"))
-        {
+        //Instantiate and store in a temporary variable
+        GameObject bulletFX = Instantiate(hitAnim, this.transform.position, Quaternion.identity);
 
-        }
         Destroy(gameObject);
+
     }
 }

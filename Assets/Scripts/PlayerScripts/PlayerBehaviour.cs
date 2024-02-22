@@ -52,6 +52,7 @@ public class PlayerBehaviour : MonoBehaviour
         if (other.gameObject.CompareTag("enemy"))
         {
             PlayerHit(2);
+            
         }
     }
 

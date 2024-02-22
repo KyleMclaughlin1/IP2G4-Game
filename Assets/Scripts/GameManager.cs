@@ -18,6 +18,9 @@ public class GameManager : MonoBehaviour
     public GameObject exitCheck;
     private bool isPaused = false;
 
+    [field: Header("Music stuff")]
+
+
     void Awake()
     {
         // disables the game over screen and the pause screen 
@@ -55,20 +58,23 @@ public class GameManager : MonoBehaviour
             pauseMenu.gameObject.SetActive(!isPaused);
             isPaused = !isPaused;
             // sets time to pause
-            Time.timeScale = 0f;
+            if(isPaused) {}
+
+            if(!isPaused) {Time.timeScale = 1f;  }
+            
         }
     }
 
     // method for unpausing
-    public void resumeGame()
-    {
+    //public void resumeGame()
+    //{
         // disables the pause menu
-        pauseMenu.gameObject.SetActive(false);
+        //pauseMenu.gameObject.SetActive(false);
         // sets the isPaused bool to false
-        isPaused = false;
+        //isPaused = false;
         // returns time to normal
-        Time.timeScale = 1f;
-    }
+        //Time.timeScale = 1f;
+    //}
 
     // method for opening the settings menu
     public void openSettingsInPause()
