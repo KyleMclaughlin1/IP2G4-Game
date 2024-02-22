@@ -74,6 +74,6 @@ public class Enemymovement : MonoBehaviour
     public void chasing()
     {
         agent.SetDestination(player.position);
-        transform.LookAt(player);
+        //transform.LookAt(player);
     }
 }
