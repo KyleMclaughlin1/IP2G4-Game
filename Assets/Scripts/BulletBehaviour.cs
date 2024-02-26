@@ -27,7 +27,7 @@ public class BulletBehaviour : MonoBehaviour
     void OnCollisionEnter(Collision other)
     {
         //Instantiate and store in a temporary variable
-        GameObject bulletFX = Instantiate(hitAnim, this.transform.position, Quaternion.identity);
+        GameObject bulletFX = Instantiate(hitAnim, this.transform.position, this.transform.rotation);
 
         Destroy(gameObject);
 
