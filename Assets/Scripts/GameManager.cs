@@ -18,9 +18,6 @@ public class GameManager : MonoBehaviour
     public GameObject exitCheck;
     private bool isPaused = false;
 
-    [field: Header("Music stuff")]
-
-
     void Awake()
     {
         // disables the game over screen and the pause screen 
@@ -41,7 +38,7 @@ public class GameManager : MonoBehaviour
 
     public void Update()
     {
-        // checks if the player has dissappeared
+        // checks if the player has died
         if (GameObject.FindWithTag("Player") == null )
         {
             // enables the game over screen ui
