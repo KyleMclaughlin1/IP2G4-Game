@@ -26,10 +26,12 @@ public class BulletBehaviour : MonoBehaviour
     // Destroy bullet on impact
     void OnCollisionEnter(Collision other)
     {
-        //Instantiate and store in a temporary variable
+        if (!other.gameObject.CompareTag("Player"))
+        {
+                //Instantiate and store in a temporary variable
         GameObject bulletFX = Instantiate(hitAnim, this.transform.position, this.transform.rotation);
 
         Destroy(gameObject);
-
+        }
     }
 }
