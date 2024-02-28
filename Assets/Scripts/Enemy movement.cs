@@ -75,5 +75,6 @@ public class Enemymovement : MonoBehaviour
     {
         agent.SetDestination(player.position);
         transform.LookAt(player);
+        transform.eulerAngles = new Vector3(0, transform.eulerAngles.y, 0);
     }
 }
