@@ -12,6 +12,7 @@ public class EnemyBehaviour : MonoBehaviour
     public GameObject dmgBuffDrop;
     public GameObject healthUpDrop;
     public float randomNum;
+    public GameObject dropPosition;
     
     void Awake(){
          healthSystem = new HealthSystem(startHealth, startHealth);
@@ -55,7 +56,7 @@ public class EnemyBehaviour : MonoBehaviour
     {
         randomNum = Random.Range(1, 3);
         Debug.Log(randomNum);
-        Vector3 position = transform.position;
+        Vector3 position = dropPosition.transform.position;
         if (randomNum == 2f)
         {
             GameObject dmgUp = Instantiate(dmgBuffDrop, position, Quaternion.identity);

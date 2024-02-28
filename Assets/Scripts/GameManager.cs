@@ -16,7 +16,8 @@ public class GameManager : MonoBehaviour
     public GameObject pauseMainMenu;
     public GameObject pauseSettingsManu;
     public GameObject exitCheck;
-    private bool isPaused = false;
+    public bool isPaused = false;
+
 
     void Awake()
     {
@@ -49,29 +50,33 @@ public class GameManager : MonoBehaviour
 
         //pause Game
         // checks if the player is not in the game over screen and has pressed "p"
-        if (Input.GetKeyDown(KeyCode.P) & GameObject.FindWithTag("Player") != null)
+        if (Input.GetKeyDown(KeyCode.P))
         {
             // enables the pause menu ui
-            pauseMenu.gameObject.SetActive(!isPaused);
-            isPaused = !isPaused;
+            pauseMenu.gameObject.SetActive(true);
+            isPaused = true;
             // sets time to pause
-            if(isPaused) {}
-
-            if(!isPaused) {Time.timeScale = 1f;  }
+            Time.timeScale = 0f;
             
+        }
+        if (isPaused = true & Input.GetKeyDown(KeyCode.O))
+        {
+            pauseMenu.gameObject.SetActive(false);
+            isPaused = false;
+            Time.timeScale = 1f;
         }
     }
 
     // method for unpausing
-    //public void resumeGame()
-    //{
+    public void resumeGame()
+    {
         // disables the pause menu
-        //pauseMenu.gameObject.SetActive(false);
-        // sets the isPaused bool to false
-        //isPaused = false;
-        // returns time to normal
-        //Time.timeScale = 1f;
-    //}
+        pauseMenu.gameObject.SetActive(false);
+         //sets the isPaused bool to false
+        isPaused = false;
+         //returns time to normal
+        Time.timeScale = 1f;
+    }
 
     // method for opening the settings menu
     public void openSettingsInPause()
