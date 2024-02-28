@@ -34,12 +34,6 @@ public class WaveSpawner : MonoBehaviour
             currentWave++;
             spawnWave();
         }
-        if(currentWave == 6)
-        {
-            Time.timeScale = 0f;
-            // move on to next level
-            // set up untill we have the timer in the game
-        }
     }
 
     void spawnWave()

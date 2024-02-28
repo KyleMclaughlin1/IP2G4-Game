@@ -17,6 +17,8 @@ public class GameManager : MonoBehaviour
     public GameObject pauseSettingsManu;
     public GameObject exitCheck;
     public bool isPaused = false;
+    public float levelTime = 300f;
+    public GameObject survivedMenu;
 
 
     void Awake()
@@ -26,6 +28,7 @@ public class GameManager : MonoBehaviour
         pauseMenu.gameObject.SetActive(false);
         exitCheck.gameObject.SetActive(false);
         pauseSettingsManu.gameObject.SetActive(false);
+        survivedMenu.gameObject.SetActive(false);
 
         if (gameManager != null && gameManager != this)
         {
@@ -65,6 +68,19 @@ public class GameManager : MonoBehaviour
             isPaused = false;
             Time.timeScale = 1f;
         }
+
+        levelTime -= Time.deltaTime;
+
+        if (levelTime <= 0f )
+        {
+            survivedScreen();
+        }
+    }
+
+    public void survivedScreen()
+    {
+        Time.timeScale = 0f;
+        survivedMenu.gameObject.SetActive(true);
     }
 
     // method for unpausing
