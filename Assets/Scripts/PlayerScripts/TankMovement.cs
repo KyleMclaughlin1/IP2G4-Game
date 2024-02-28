@@ -62,7 +62,7 @@ public class TankMovement : MonoBehaviour
             //Turn tank
         }
 
-        if (y_Inpt < axisDeadZone && y_Inpt > -axisDeadZone) // If player is not holding a direction on the y input axis
+        if (y_Inpt < axisDeadZone && y_Inpt > -axisDeadZone && tankSpeed > 0) // If player is not holding a direction on the y input axis
         { 
             tankSpeed -= decayRate * Time.deltaTime;
             //Slow tank down by decay rate, as player is not pushing the tank forward 
@@ -82,7 +82,13 @@ public class TankMovement : MonoBehaviour
             }
         }
 
-        tankSpeed = Mathf.Clamp(tankSpeed, 0, maxSpeed);
+        if (y_Inpt < axisDeadZone && y_Inpt > -axisDeadZone && tankSpeed < 0)
+        {
+
+            tankSpeed += decayRate * Time.deltaTime;
+        }
+
+        tankSpeed = Mathf.Clamp(tankSpeed, -15, maxSpeed);
         //Limit tank from exceeding max speed
 
         if(tankSpeed > minDustSpeed) //If tank is moving fast enough to spawn dust particles
