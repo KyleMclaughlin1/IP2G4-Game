@@ -26,6 +26,12 @@ public class CannonControl : MonoBehaviour
 
     private Vector3 gpAngle; //Gamepad variable for rotation
 
+    public AudioSource shootingAudioSource;
+
+    void start()
+    {
+        shootingAudioSource = GetComponent<AudioSource>();
+    }
 
     void Update()
     {
@@ -64,6 +70,7 @@ public class CannonControl : MonoBehaviour
                 //face the bullet sideways instead of upwards
                 newBullet.transform.Rotate(Vector3.right * 90);
                 //fix the angle to work with the cannon defaulting upwards again
+                shootingAudioSource.Play();
                 if (newBullet.GetComponent<BulletBehaviour>())
                 {
                     newBullet.GetComponent<BulletBehaviour>().bulletDamage *= bulletDamageMultiplier;
@@ -106,6 +113,7 @@ public class CannonControl : MonoBehaviour
                 //face the bullet sideways instead of upwards
                 newBullet.transform.Rotate(Vector3.right * 90);
                 //fix the angle to work with the cannon defaulting upwards again
+                shootingAudioSource.Play();
                 if (newBullet.GetComponent<BulletBehaviour>())
                 {
                     newBullet.GetComponent<BulletBehaviour>().bulletDamage *= bulletDamageMultiplier;
