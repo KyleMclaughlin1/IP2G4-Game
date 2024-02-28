@@ -23,7 +23,7 @@ public class WaveSpawner : MonoBehaviour
     // Start is called before the first frame update
     void Start()
     {
-        
+        spawnWave();
     }
 
     // Update is called once per frame
@@ -33,6 +33,12 @@ public class WaveSpawner : MonoBehaviour
         {
             currentWave++;
             spawnWave();
+        }
+        if(currentWave == 6)
+        {
+            Time.timeScale = 0f;
+            // move on to next level
+            // set up untill we have the timer in the game
         }
     }
 
