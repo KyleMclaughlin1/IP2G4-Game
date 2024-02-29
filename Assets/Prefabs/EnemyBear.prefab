@@ -150,8 +150,8 @@ MonoBehaviour:
     serializedVersion: 2
     m_Bits: 128
   walkPoint: {x: 0, y: 0, z: 0}
-  walkPointRange: 20
-  sightrange: 50
+  walkPointRange: 40
+  sightrange: 75
 --- !u!195 &2982104754923800859
 NavMeshAgent:
   m_ObjectHideFlags: 0
@@ -162,8 +162,8 @@ NavMeshAgent:
   m_Enabled: 1
   m_AgentTypeID: 0
   m_Radius: 0.5000001
-  m_Speed: 3.5
-  m_Acceleration: 8
+  m_Speed: 25
+  m_Acceleration: 50
   avoidancePriority: 50
   m_AngularSpeed: 120
   m_StoppingDistance: 0
