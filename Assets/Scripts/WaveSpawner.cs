@@ -41,7 +41,7 @@ public class WaveSpawner : MonoBehaviour
         for (int i = 0; i < waves[currentWave].GetMonsterSpawnList().Length; i++)
         {
             Instantiate(waves[currentWave].GetMonsterSpawnList()[i],findSpawnLoc(),Quaternion.identity);
-
+            print(i);
         }
     }
 

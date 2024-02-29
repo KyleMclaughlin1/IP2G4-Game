@@ -20,6 +20,9 @@ public class GameManager : MonoBehaviour
     public float levelTime = 300f;
     public GameObject survivedMenu;
 
+    public GameObject rounds;
+    private bool gameOver = false;
+
 
     void Awake()
     {
@@ -29,6 +32,7 @@ public class GameManager : MonoBehaviour
         exitCheck.gameObject.SetActive(false);
         pauseSettingsManu.gameObject.SetActive(false);
         survivedMenu.gameObject.SetActive(false);
+        rounds.gameObject.SetActive(true);
 
         if (gameManager != null && gameManager != this)
         {
@@ -49,22 +53,30 @@ public class GameManager : MonoBehaviour
             gameOverScreen.gameObject.SetActive(true);
             // sets time to pause
             Time.timeScale = 0f;
+            gameOver = true;
         }
 
         //pause Game
         // checks if the player is not in the game over screen and has pressed "p"
-        if (Input.GetKeyDown(KeyCode.P))
+        if (Input.GetKeyDown(KeyCode.P) && !gameOver)
+        {
+            isPaused = !isPaused;
+        }
+
+        if (isPaused)
         {
             // enables the pause menu ui
             pauseMenu.gameObject.SetActive(true);
-            isPaused = true;
-            // sets time to pause
-            Time.timeScale = 0f;
-            
+            rounds.gameObject.SetActive(false);
+
+            //sets time to pause
+            Time.timeScale = 0f;           
         }
-        if (isPaused = true & Input.GetKeyDown(KeyCode.O))
+
+        if (!isPaused)
         {
             pauseMenu.gameObject.SetActive(false);
+            rounds.gameObject.SetActive(true);
             isPaused = false;
             Time.timeScale = 1f;
         }
