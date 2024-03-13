@@ -20,6 +20,8 @@ public class WaveSpawner : MonoBehaviour
 
     public Transform[] spawnPoints;
 
+    public float timer;
+
     // Start is called before the first frame update
     void Start()
     {
@@ -34,6 +36,8 @@ public class WaveSpawner : MonoBehaviour
             currentWave++;
             spawnWave();
         }
+
+
     }
 
     void spawnWave()
