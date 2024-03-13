@@ -41,11 +41,20 @@ public class TankMovement : MonoBehaviour
 
     private Rigidbody rb; // Reference to RigidBody
 
+    public AudioSource EngineAudioSource;
+    public float minPitch;
+    public float maxPitch;
+    public float tankPitch;
+    public float currentTankSpeed;
+    public float minAccelSpeed = 1.5f;
+    public float maxAccelSpeed = 30f;
+
     // Axis names are "Horizontal" and "Vertical"
 
     void Start()
     {
         rb = GetComponent<Rigidbody>(); //Get reference to Rigidbody
+        EngineAudioSource = GetComponent<AudioSource>();
     }
 
     // Update is called once per frame
@@ -55,6 +64,7 @@ public class TankMovement : MonoBehaviour
         float y_Inpt = Input.GetAxis("Vertical");
         //Store input in a variable, for code readability  
 
+        drivingAudio();
 
         if (x_Inpt > axisDeadZone || x_Inpt < -axisDeadZone) //If player is pressing left or right on the x input axis 
         {
@@ -118,4 +128,26 @@ public class TankMovement : MonoBehaviour
         //Set forward velocity to tankSpeed 
 
     }
+
+    void drivingAudio()
+    {
+        currentTankSpeed = rb.velocity.magnitude;
+        tankPitch = rb.velocity.magnitude / 60f;
+
+        if (currentTankSpeed < minAccelSpeed)
+        {
+            EngineAudioSource.pitch = minPitch;
+        }
+
+        if (currentTankSpeed > minAccelSpeed && currentTankSpeed < maxAccelSpeed)
+        {
+            EngineAudioSource.pitch = maxPitch + tankPitch;
+        }
+
+        if (currentTankSpeed > maxAccelSpeed)
+        {
+            EngineAudioSource.pitch = maxPitch;
+        }
+    }
+
 }
