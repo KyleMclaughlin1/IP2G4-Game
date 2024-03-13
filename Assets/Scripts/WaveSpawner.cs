@@ -36,12 +36,6 @@ public class WaveSpawner : MonoBehaviour
             currentWave++;
             spawnWave();
         }
-        else
-        {
-            StartCoroutine(waveTimeOut());
-        }
-
-
     }
 
     void spawnWave()
@@ -60,9 +54,4 @@ public class WaveSpawner : MonoBehaviour
         return new Vector3(SpawnPoint.position.x, SpawnPoint.position.y, SpawnPoint.position.z);
     }
 
-    IEnumerator waveTimeOut()
-    {
-        yield return new WaitForSeconds(45f);
-        spawnWave();
-    }
 }
