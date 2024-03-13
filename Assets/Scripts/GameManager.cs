@@ -2,6 +2,8 @@ using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
 using UnityEngine.SceneManagement;
+using UnityEngine.UI;
+using TMPro;
 
 public class GameManager : MonoBehaviour
 {
@@ -17,12 +19,17 @@ public class GameManager : MonoBehaviour
     public GameObject pauseSettingsManu;
     public GameObject exitCheck;
     public bool isPaused = false;
-    public float levelTime = 300f;
+    public int levelTime = 300;
     public GameObject survivedMenu;
+    public TextMeshProUGUI levelTimerUi;
 
     public GameObject rounds;
     private bool gameOver = false;
 
+    void Start()
+    {
+        StartCoroutine(timerCountdown());
+    }
 
     void Awake()
     {
@@ -81,9 +88,7 @@ public class GameManager : MonoBehaviour
             Time.timeScale = 1f;
         }
 
-        levelTime -= Time.deltaTime;
-
-        if (levelTime <= 0f )
+        if (levelTime <= 0 )
         {
             survivedScreen();
         }
@@ -175,5 +180,15 @@ public class GameManager : MonoBehaviour
     {
         // reloads the scene if the player chooses to retry the level
         SceneManager.LoadScene("InGame");
+    }
+
+    IEnumerator timerCountdown()
+    {
+        while (levelTime > 0)
+        {
+            levelTimerUi.text = levelTime.ToString();
+            yield return new WaitForSeconds(1f);
+            levelTime--;
+        }
     }
 }

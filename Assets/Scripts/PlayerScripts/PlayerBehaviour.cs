@@ -6,10 +6,13 @@ public class PlayerBehaviour : MonoBehaviour
 {
 
     public CannonControl bullet;
+    public GameObject buffLight;
+    public AudioSource BatteryAudioSource;
 
     void Start()
     {
-
+        buffLight.SetActive(false);
+        BatteryAudioSource = GetComponent<AudioSource>();
     }
 
     void Update()
@@ -58,18 +61,22 @@ public class PlayerBehaviour : MonoBehaviour
 
     public void increaseDamage()
     {
+        buffLight.SetActive(true);
+        BatteryAudioSource.Play();
         bullet.bulletDamageMultiplier = bullet.bulletDamageMultiplier + 1;
         StartCoroutine(buffTimer());
     }
 
     IEnumerator buffTimer()
     {
-        yield return new WaitForSeconds(15);
+        yield return new WaitForSeconds(10);
         bullet.bulletDamageMultiplier = bullet.bulletDamageMultiplier - 1;
+        buffLight.SetActive(false);
     }
 
     public void healthIncrease()
     {
         PlayerHeal(1);
+        BatteryAudioSource.Play();
     }
 }

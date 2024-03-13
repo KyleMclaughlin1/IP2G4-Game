@@ -7,6 +7,11 @@ public class DamageUpPickUp : MonoBehaviour
 
     public bool isBuffed = false;
 
+    void Start()
+    {
+        isBuffed = false;
+    }
+
     void OnTriggerEnter(Collider c)
     {
         PlayerBehaviour playerBehaviour = c.GetComponent<PlayerBehaviour>();
