@@ -22,6 +22,8 @@ public class GameManager : MonoBehaviour
     public int levelTime = 300;
     public GameObject survivedMenu;
     public TextMeshProUGUI levelTimerUi;
+    public GameObject ingameTimer;
+    public GameObject laps;
 
     public GameObject rounds;
     private bool gameOver = false;
@@ -40,6 +42,8 @@ public class GameManager : MonoBehaviour
         pauseSettingsManu.gameObject.SetActive(false);
         survivedMenu.gameObject.SetActive(false);
         rounds.gameObject.SetActive(true);
+        ingameTimer.gameObject.SetActive(true);
+        laps.gameObject.SetActive(true);
 
         if (gameManager != null && gameManager != this)
         {
@@ -75,6 +79,8 @@ public class GameManager : MonoBehaviour
             // enables the pause menu ui
             pauseMenu.gameObject.SetActive(true);
             rounds.gameObject.SetActive(false);
+            ingameTimer.gameObject.SetActive(false);
+            laps.gameObject.SetActive(false);
 
             //sets time to pause
             Time.timeScale = 0f;           
@@ -86,6 +92,8 @@ public class GameManager : MonoBehaviour
             rounds.gameObject.SetActive(true);
             isPaused = false;
             Time.timeScale = 1f;
+            ingameTimer.gameObject.SetActive(true);
+            laps.gameObject.SetActive(true);
         }
 
         if (levelTime <= 0 )
