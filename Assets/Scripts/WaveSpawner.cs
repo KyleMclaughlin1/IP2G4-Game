@@ -21,6 +21,7 @@ public class WaveSpawner : MonoBehaviour
     public Transform[] spawnPoints;
 
     public float timer;
+    public float timeBetweenWaves;
 
     // Start is called before the first frame update
     void Start()
@@ -34,6 +35,14 @@ public class WaveSpawner : MonoBehaviour
         if(GameObject.FindWithTag("enemy") == null)
         {
             currentWave++;
+            spawnWave();
+        }
+
+        timer += Time.deltaTime;
+
+        if (timer > timeBetweenWaves)
+        {
+            timer = 0;
             spawnWave();
         }
     }
