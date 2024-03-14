@@ -12,7 +12,6 @@ public class PlayerBehaviour : MonoBehaviour
     void Start()
     {
         buffLight.SetActive(false);
-        BatteryAudioSource = GetComponent<AudioSource>();
     }
 
     void Update()
