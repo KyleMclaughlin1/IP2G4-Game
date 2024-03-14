@@ -1,6 +1,8 @@
 using System.Collections;
 using System.Collections.Generic;
+using TMPro;
 using UnityEngine;
+using UnityEngine.UI;
 
 public class LapChecker : MonoBehaviour
 {
@@ -11,9 +13,13 @@ public class LapChecker : MonoBehaviour
     private int checkPIndex = 0; // Integer to track Checkpoint progress
 
     public int trackLap = 0;
+    [Tooltip("Reference to Lap text game object")]
+    public GameObject lapTextObj;
+    private TextMeshPro lapText; 
 
     private void Awake()
     {
+        lapText = lapTextObj.GetComponent<TextMeshPro>();
       foreach(Transform checkPoint in checkPointParent.GetComponentInChildren<Transform>())
         {
             Debug.Log(checkPoint);
@@ -40,6 +46,7 @@ public class LapChecker : MonoBehaviour
             {
                 checkPIndex = 0;
                 trackLap += 1;
+                lapText.text = "Lap " + trackLap;
             }
         }
         else
