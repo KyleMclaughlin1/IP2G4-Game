@@ -890,7 +890,7 @@ GameObject:
   - component: {fileID: 115068117}
   m_Layer: 0
   m_Name: straight_piece31 (2)
-  m_TagString: Untagged
+  m_TagString: road
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
@@ -1043,6 +1043,10 @@ PrefabInstance:
     - target: {fileID: -8679921383154817045, guid: 3bcb8a8091d34af4c9577c0f2334753c, type: 3}
       propertyPath: m_LocalEulerAnglesHint.z
       value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 639284248863092551, guid: 3bcb8a8091d34af4c9577c0f2334753c, type: 3}
+      propertyPath: m_TagString
+      value: road
       objectReference: {fileID: 0}
     - target: {fileID: 919132149155446097, guid: 3bcb8a8091d34af4c9577c0f2334753c, type: 3}
       propertyPath: m_Name
@@ -5574,11 +5578,19 @@ PrefabInstance:
       propertyPath: m_LocalEulerAnglesHint.z
       value: 0
       objectReference: {fileID: 0}
+    - target: {fileID: 639284248863092551, guid: 3bcb8a8091d34af4c9577c0f2334753c, type: 3}
+      propertyPath: m_TagString
+      value: road
+      objectReference: {fileID: 0}
     - target: {fileID: 919132149155446097, guid: 3bcb8a8091d34af4c9577c0f2334753c, type: 3}
       propertyPath: m_Name
       value: Double Single Track Piece (2)
       objectReference: {fileID: 0}
     - target: {fileID: 919132149155446097, guid: 3bcb8a8091d34af4c9577c0f2334753c, type: 3}
+      propertyPath: m_TagString
+      value: road
+      objectReference: {fileID: 0}
+    - target: {fileID: 6583986157153997683, guid: 3bcb8a8091d34af4c9577c0f2334753c, type: 3}
       propertyPath: m_TagString
       value: road
       objectReference: {fileID: 0}
@@ -7212,6 +7224,10 @@ PrefabInstance:
       propertyPath: m_LocalEulerAnglesHint.z
       value: 0
       objectReference: {fileID: 0}
+    - target: {fileID: 639284248863092551, guid: 3bcb8a8091d34af4c9577c0f2334753c, type: 3}
+      propertyPath: m_TagString
+      value: road
+      objectReference: {fileID: 0}
     - target: {fileID: 919132149155446097, guid: 3bcb8a8091d34af4c9577c0f2334753c, type: 3}
       propertyPath: m_Name
       value: Double Single Track Piece (4)
@@ -8810,7 +8826,7 @@ GameObject:
   - component: {fileID: 750269929}
   m_Layer: 0
   m_Name: straight_piece31 (1)
-  m_TagString: Untagged
+  m_TagString: road
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
@@ -8964,11 +8980,19 @@ PrefabInstance:
       propertyPath: m_LocalEulerAnglesHint.z
       value: 0
       objectReference: {fileID: 0}
+    - target: {fileID: 639284248863092551, guid: 3bcb8a8091d34af4c9577c0f2334753c, type: 3}
+      propertyPath: m_TagString
+      value: road
+      objectReference: {fileID: 0}
     - target: {fileID: 919132149155446097, guid: 3bcb8a8091d34af4c9577c0f2334753c, type: 3}
       propertyPath: m_Name
       value: Double Single Track Piece (2)
       objectReference: {fileID: 0}
     - target: {fileID: 919132149155446097, guid: 3bcb8a8091d34af4c9577c0f2334753c, type: 3}
+      propertyPath: m_TagString
+      value: road
+      objectReference: {fileID: 0}
+    - target: {fileID: 6583986157153997683, guid: 3bcb8a8091d34af4c9577c0f2334753c, type: 3}
       propertyPath: m_TagString
       value: road
       objectReference: {fileID: 0}
@@ -17186,7 +17210,7 @@ GameObject:
   - component: {fileID: 1753249393}
   m_Layer: 0
   m_Name: straight_piece31 (1)
-  m_TagString: Untagged
+  m_TagString: road
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
@@ -19006,11 +19030,19 @@ PrefabInstance:
       propertyPath: m_LocalEulerAnglesHint.z
       value: 0
       objectReference: {fileID: 0}
+    - target: {fileID: 639284248863092551, guid: 3bcb8a8091d34af4c9577c0f2334753c, type: 3}
+      propertyPath: m_TagString
+      value: road
+      objectReference: {fileID: 0}
     - target: {fileID: 919132149155446097, guid: 3bcb8a8091d34af4c9577c0f2334753c, type: 3}
       propertyPath: m_Name
       value: Double Single Track Piece (5)
       objectReference: {fileID: 0}
     - target: {fileID: 919132149155446097, guid: 3bcb8a8091d34af4c9577c0f2334753c, type: 3}
+      propertyPath: m_TagString
+      value: road
+      objectReference: {fileID: 0}
+    - target: {fileID: 6583986157153997683, guid: 3bcb8a8091d34af4c9577c0f2334753c, type: 3}
       propertyPath: m_TagString
       value: road
       objectReference: {fileID: 0}
