@@ -48,6 +48,7 @@ public class TankMovement : MonoBehaviour
     public float currentTankSpeed;
     public float minAccelSpeed = 1.5f;
     public float maxAccelSpeed = 30f;
+    RaycastHit hit;
 
     // Axis names are "Horizontal" and "Vertical"
 
@@ -55,6 +56,7 @@ public class TankMovement : MonoBehaviour
     {
         rb = GetComponent<Rigidbody>(); //Get reference to Rigidbody
         EngineAudioSource = GetComponent<AudioSource>();
+
     }
 
     // Update is called once per frame
@@ -66,7 +68,23 @@ public class TankMovement : MonoBehaviour
 
         drivingAudio();
 
-        if (x_Inpt > axisDeadZone || x_Inpt < -axisDeadZone) //If player is pressing left or right on the x input axis 
+        if (Physics.Raycast(transform.position, -Vector3.up, out hit))
+        {
+            if (hit.transform.gameObject.tag == "road")
+            {
+                Debug.Log("On road");
+                accelRate = 15f;
+                maxSpeed = 30f;
+            }
+            else
+            {
+                Debug.Log("On floor");
+                accelRate = 10f;
+                maxSpeed = 20f;
+            }
+        }
+
+            if (x_Inpt > axisDeadZone || x_Inpt < -axisDeadZone) //If player is pressing left or right on the x input axis 
         {
             transform.Rotate(transform.up * x_Inpt * turnSpeed * Time.deltaTime);
             //Turn tank

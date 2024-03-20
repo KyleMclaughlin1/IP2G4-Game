@@ -8,6 +8,7 @@ TagManager:
   - enemy
   - bullet
   - TankBody
+  - road
   layers:
   - Default
   - TransparentFX
