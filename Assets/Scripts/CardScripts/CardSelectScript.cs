@@ -68,7 +68,7 @@ public class CardSelectScript : MonoBehaviour
         }
         else if (cardRemoved)
         {
-            transform.position = Vector3.Slerp(startPos, ignoredEndPos, cardRemovalLerp);
+            transform.position = Vector3.Lerp(startPos, ignoredEndPos, cardRemovalLerp);
             cardRemovalTimer += Time.deltaTime + (cardSpeedBoost * Time.deltaTime);
             cardRemovalLerp = cardRemovalTimer / cardRemovalTime;
             cardSpeedBoost += cardAccel;

@@ -21,11 +21,14 @@ public class CardSpawner : MonoBehaviour
     {
         if (freeCards <= cardCount - choiceCount)
         {
-            do
+
+            foreach (Transform cardObj in transform.GetComponentInChildren<Transform>())
             {
-                CardSelectScript cardScript = transform.GetChild(0).transform.GetComponent<CardSelectScript>();
+
+
+                CardSelectScript cardScript = cardObj.GetComponent<CardSelectScript>();
                 cardScript.removeCard();
-            } while (transform.GetChild(0));
+            }
             }
 
 
