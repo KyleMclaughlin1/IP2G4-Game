@@ -33,7 +33,7 @@ Transform:
   serializedVersion: 2
   m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
   m_LocalPosition: {x: 27.136, y: 0.76, z: 25.854}
-  m_LocalScale: {x: 10, y: 5, z: 10}
+  m_LocalScale: {x: 16, y: 8, z: 16}
   m_ConstrainProportionsScale: 1
   m_Children:
   - {fileID: 1452412663252437666}
@@ -171,7 +171,7 @@ NavMeshAgent:
   m_AutoBraking: 1
   m_AutoRepath: 1
   m_Height: 2
-  m_BaseOffset: 1
+  m_BaseOffset: 1.4
   m_WalkableMask: 1
   m_ObstacleAvoidanceType: 4
 --- !u!54 &3321478274714509427
