@@ -1,6 +1,7 @@
 using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
+using UnityEngine.SceneManagement;
 
 public class CardSpawner : MonoBehaviour
 {
@@ -11,6 +12,9 @@ public class CardSpawner : MonoBehaviour
     public int choiceCount = 1;
     internal int freeCards;
 
+    private float deleteTimer; // Timer for deleting scene once card is selected
+    private bool sceneEnded = false;
+
     void Start()
     {
         SpawnCards();
@@ -19,9 +23,10 @@ public class CardSpawner : MonoBehaviour
 
     void Update()
     {
-        if (freeCards <= cardCount - choiceCount)
+        if (freeCards <= cardCount - choiceCount && !sceneEnded)
         {
-
+            deleteTimer = transform.GetChild(0).GetComponent<CardSelectScript>().cardRemovalTime;
+            sceneEnded = true;
             foreach (Transform cardObj in transform.GetComponentInChildren<Transform>())
             {
 
@@ -29,7 +34,22 @@ public class CardSpawner : MonoBehaviour
                 CardSelectScript cardScript = cardObj.GetComponent<CardSelectScript>();
                 cardScript.removeCard();
             }
+
+        }
+        else if(sceneEnded) {
+            deleteTimer -= Time.deltaTime;
+            if(deleteTimer <= 0)
+            {
+                if (GameObject.Find("GameManager"))
+                {
+                    GameObject gameManager = GameObject.Find("GameManager");
+                    gameManager.GetComponent<SceneTestScript>().testNum += 1;
+                }
+
+                SceneManager.UnloadSceneAsync(2);
             }
+        
+        }
 
 
     }

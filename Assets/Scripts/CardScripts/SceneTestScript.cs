@@ -5,6 +5,8 @@ using UnityEngine.SceneManagement;
 
 public class SceneTestScript : MonoBehaviour
 {
+    public int testNum = 1;
+
     // Start is called before the first frame update
     void Start()
     {
