@@ -30,6 +30,7 @@ public class CardSelectScript : MonoBehaviour
     public UnityEvent sendCard; // Event for sending card info
 
 
+
     internal string cardDesc = "This card is useless"; // Temp variable to take the place of the cards description
 
     void Start()
@@ -58,7 +59,7 @@ public class CardSelectScript : MonoBehaviour
         if (cardSelected)
         {
             transform.position = Vector3.Slerp(startPos, endPos, cardRemovalLerp);
-            cardRemovalTimer += Time.deltaTime + (cardSpeedBoost * Time.deltaTime);
+            cardRemovalTimer += Time.unscaledDeltaTime + (cardSpeedBoost * Time.unscaledDeltaTime);
             cardRemovalLerp = cardRemovalTimer / cardRemovalTime;
             cardSpeedBoost += cardAccel;
             if (cardRemovalLerp >= 1f)
@@ -69,7 +70,7 @@ public class CardSelectScript : MonoBehaviour
         else if (cardRemoved)
         {
             transform.position = Vector3.Lerp(startPos, ignoredEndPos, cardRemovalLerp);
-            cardRemovalTimer += Time.deltaTime + (cardSpeedBoost * Time.deltaTime);
+            cardRemovalTimer += Time.unscaledDeltaTime + (cardSpeedBoost * Time.unscaledDeltaTime);
             cardRemovalLerp = cardRemovalTimer / cardRemovalTime;
             cardSpeedBoost += cardAccel;
         }
@@ -118,7 +119,7 @@ public class CardSelectScript : MonoBehaviour
         if (mouseHover && transform.localScale.x < hoverScale)
         {
             transform.localScale = new Vector3(transform.localScale.x + 0.1f, transform.localScale.y + 0.1f, transform.localScale.z);
-            yield return new WaitForSeconds(0.1f);
+            yield return new WaitForSecondsRealtime(0.1f);
         }
         else
         {
@@ -133,7 +134,7 @@ public class CardSelectScript : MonoBehaviour
         if (!mouseHover)
         {
             transform.localScale = new Vector3(transform.localScale.x - 0.1f, transform.localScale.y - 0.1f, transform.localScale.z);
-            yield return new WaitForSeconds(0.1f);
+            yield return new WaitForSecondsRealtime(0.1f);
         }
         else
         {

@@ -18,7 +18,8 @@ public class SceneTestScript : MonoBehaviour
     {
         if (Input.GetKeyDown(KeyCode.I))
         {
-            SceneManager.LoadScene("CardScene", LoadSceneMode.Additive);
+            
         }
+         Debug.Log("TIME " + Time.timeScale);
     }
 }

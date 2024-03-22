@@ -25,7 +25,7 @@ public class CardSpawner : MonoBehaviour
     {
         if (freeCards <= cardCount - choiceCount && !sceneEnded)
         {
-            deleteTimer = transform.GetChild(0).GetComponent<CardSelectScript>().cardRemovalTime;
+            deleteTimer = transform.GetChild(0).GetComponent<CardSelectScript>().cardRemovalTime / 2;
             sceneEnded = true;
             foreach (Transform cardObj in transform.GetComponentInChildren<Transform>())
             {
@@ -37,13 +37,16 @@ public class CardSpawner : MonoBehaviour
 
         }
         else if(sceneEnded) {
-            deleteTimer -= Time.deltaTime;
+            deleteTimer -= Time.unscaledDeltaTime;
             if(deleteTimer <= 0)
             {
                 if (GameObject.Find("GameManager"))
                 {
                     GameObject gameManager = GameObject.Find("GameManager");
-                    gameManager.GetComponent<SceneTestScript>().testNum += 1;
+                   // gameManager.GetComponent<SceneTestScript>().testNum += 1;
+                    gameManager.GetComponent<GameManager>().enabled = true;
+
+                    Time.timeScale = 1f;
                 }
 
                 SceneManager.UnloadSceneAsync(2);
@@ -77,7 +80,7 @@ public class CardSpawner : MonoBehaviour
         {
             newCard.transform.position = Vector3.Lerp(startPos, cardPos[cardId].position, lerpTimer);
             lerpTimer += 0.025f;
-            yield return new WaitForSeconds(0.025f);
+            yield return new WaitForSecondsRealtime(0.025f);
         } while (lerpTimer <= 1);
 
         newCard.GetComponent<CardSelectScript>().enabled = true;

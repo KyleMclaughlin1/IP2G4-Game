@@ -1,6 +1,8 @@
 using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
+using UnityEngine.SceneManagement;
+using TMPro;
 
 public class LapChecker : MonoBehaviour
 {
@@ -11,6 +13,8 @@ public class LapChecker : MonoBehaviour
     private int checkPIndex = 0; // Integer to track Checkpoint progress
 
     public int trackLap = 0;
+
+    public TMP_Text lapText;
 
     private void Awake()
     {
@@ -40,6 +44,8 @@ public class LapChecker : MonoBehaviour
             {
                 checkPIndex = 0;
                 trackLap += 1;
+                lapText.text = "Lap " + trackLap;
+                CardUpgrades();
             }
         }
         else
@@ -47,4 +53,14 @@ public class LapChecker : MonoBehaviour
             Debug.Log("Incorrect Checkpoint");
         }
     }
+
+
+    private void CardUpgrades(){
+    GameManager gameManag = GetComponent<GameManager>();
+            gameManag.enabled = false;
+            Time.timeScale = 0.01f; // Would be 0, but the mouse over function doesn't seem to work that way
+            SceneManager.LoadScene("CardScene", LoadSceneMode.Additive);
+
+    }
+
 }

@@ -121,7 +121,7 @@ MonoBehaviour:
   hoverScaleIncrement: 1.25
   cardRemovalTime: 3
   endPos: {x: 0, y: 0, z: -5}
-  ignoredEndPos: {x: -10, y: 0, z: 0}
+  ignoredEndPos: {x: -30, y: 0, z: 0}
   cardAccel: 0.05
   sendCard:
     m_PersistentCalls:
