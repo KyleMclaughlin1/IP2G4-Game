@@ -68,9 +68,12 @@ public class CardSpawner : MonoBehaviour
         }
     }
 
-    public void receiveCardInfo()
+    public void receiveCardInfo(CardClass cardInfo)
     {
-        Debug.Log("Event worked");
+        Debug.Log("Event worked " + cardInfo.cardName);
+        CardFunctions CardEff = GetComponent<CardFunctions>();
+        CardEff.cardFunc = cardInfo.CardEffect;
+        CardEff.runCardFunc();
     }
 
     IEnumerator PositionCard(GameObject newCard, int cardId)

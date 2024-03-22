@@ -27,8 +27,9 @@ public class CardSelectScript : MonoBehaviour
     public float cardAccel = 0.05f;
     private float cardSpeedBoost = 0; // Tracks incease from cardAccel.
     private CardSpawner cardControl; // Link to card spawner script, for tracking card amount
-    public UnityEvent sendCard; // Event for sending card info
+    public UnityEvent<CardClass> sendCard; // Event for sending card info
 
+    public CardClass cardInfo;
 
 
     internal string cardDesc = "This card is useless"; // Temp variable to take the place of the cards description
@@ -104,7 +105,7 @@ public class CardSelectScript : MonoBehaviour
 
     public void sendCardInfo()
     {
-        sendCard.Invoke();
+        sendCard.Invoke(cardInfo);
     }
 
 

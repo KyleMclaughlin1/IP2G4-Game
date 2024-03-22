@@ -38,7 +38,7 @@ RenderSettings:
   m_ReflectionIntensity: 1
   m_CustomReflection: {fileID: 0}
   m_Sun: {fileID: 0}
-  m_IndirectSpecularColor: {r: 0.37311953, g: 0.38074014, b: 0.3587274, a: 1}
+  m_IndirectSpecularColor: {r: 0.37311918, g: 0.3807398, b: 0.35872716, a: 1}
   m_UseRadianceAmbientProbe: 0
 --- !u!157 &3
 LightmapSettings:
@@ -164,6 +164,8 @@ GameObject:
   m_Component:
   - component: {fileID: 750639309}
   - component: {fileID: 750639308}
+  - component: {fileID: 750639310}
+  - component: {fileID: 750639311}
   m_Layer: 0
   m_Name: CardSpawner
   m_TagString: Untagged
@@ -207,6 +209,36 @@ Transform:
   m_Children: []
   m_Father: {fileID: 0}
   m_LocalEulerAnglesHint: {x: 45, y: 0, z: 0}
+--- !u!114 &750639310
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 750639307}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: ec9fcfa3957f6a045a4441aeb2ec1216, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  classList:
+  - {fileID: 11400000, guid: fbd342b0fdb21ad4dabc260e0cac3633, type: 2}
+  - {fileID: 11400000, guid: b2f2e121353ef3448b26c2f81f13aaed, type: 2}
+  - {fileID: 11400000, guid: c8294e2834471aa49b1b3f093a6e609a, type: 2}
+  - {fileID: 11400000, guid: de4318da7370b9f478c5be2b87d1df34, type: 2}
+--- !u!114 &750639311
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 750639307}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 0bfddeda2c8a49b4f8944539723ab9bb, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  cardFunc: 2
 --- !u!1 &872293872
 GameObject:
   m_ObjectHideFlags: 0
