@@ -11,7 +11,7 @@ public class TankMovement : MonoBehaviour
     [Tooltip("How fast the tank is currently moving, not to be edited")]
     private float tankSpeed = 0f;
     [Tooltip("Max speed of the Tank")]
-    public float maxSpeed = 60f;
+    public float maxSpeed = 1000f;
     [Tooltip("Acceleration of the Tank")]
     public float accelRate = 30f;
     [Tooltip("Decceleration when reverse input is pressed")]
@@ -74,13 +74,13 @@ public class TankMovement : MonoBehaviour
             {
                 Debug.Log("On road");
                 accelRate = 15f;
-                maxSpeed = 30f;
+                maxSpeed = 33f;
             }
             else
             {
                 Debug.Log("On floor");
                 accelRate = 10f;
-                maxSpeed = 20f;
+                maxSpeed = 15f;
             }
         }
 
