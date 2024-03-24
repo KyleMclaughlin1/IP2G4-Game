@@ -194,9 +194,12 @@ public class GameManager : MonoBehaviour
     {
         while (levelTime > 0)
         {
-            levelTimerUi.text = levelTime.ToString();
-            yield return new WaitForSeconds(1f);
-            levelTime--;
+            if (gameOver == false)
+            {
+                levelTimerUi.text = levelTime.ToString();
+                yield return new WaitForSeconds(1f);
+                levelTime--;
+            }
         }
     }
 }
