@@ -29,6 +29,8 @@ public class CardSelectScript : MonoBehaviour
     private CardSpawner cardControl; // Link to card spawner script, for tracking card amount
     public UnityEvent<CardClass> sendCard; // Event for sending card info
 
+    public UnityEvent<string> highLightcard; // Event for showing card description on ui
+
     public CardClass cardInfo;
 
 
@@ -41,7 +43,8 @@ public class CardSelectScript : MonoBehaviour
         storedScale = transform.localScale;
         startPos = transform.position;
         cardControl = GetComponentInParent<CardSpawner>();
-        sendCard.AddListener(cardControl.receiveCardInfo);
+       // sendCard.AddListener(cardControl.receiveCardInfo);
+       // ^ changed to add listener in cardspawner script when spawned
     }
 
     // Update is called once per frame
@@ -86,6 +89,7 @@ public class CardSelectScript : MonoBehaviour
         if (!cardSelected && transform.GetComponent<CardSelectScript>().enabled)
         {
             mouseHover = true;
+            highLightcard.Invoke(cardInfo.cardDesc);
             StartCoroutine(ScaleCard());
         }
     }

@@ -6,6 +6,7 @@ using UnityEngine.SceneManagement;
 public class CardSpawner : MonoBehaviour
 {
     public GameObject card; // Card Prefab
+    public CardDescriptor cardDescriptor;
     public Vector3 startPos;
     public Transform[] cardPos = new Transform[4];
     public int cardCount = 4;
@@ -15,8 +16,12 @@ public class CardSpawner : MonoBehaviour
     private float deleteTimer; // Timer for deleting scene once card is selected
     private bool sceneEnded = false;
 
+    private CardDeck cardDeck; // Reference to card deck script
+
+
     void Start()
     {
+        cardDeck = GetComponent<CardDeck>();
         SpawnCards();
     }
 
@@ -57,12 +62,32 @@ public class CardSpawner : MonoBehaviour
 
     }
 
+public CardClass DrawCard(){
+    if(cardDeck.classList[0]){
+CardClass drawnCard = cardDeck.classList[0];
+//Get card on top of deck
+
+cardDeck.classList.RemoveAt(0);
+//Remove card from deck
+
+return drawnCard;
+    }
+        return cardDeck.EmptyDeckCard;
+        //Deck is empty, get replacement card
+
+}
+
+
     public void SpawnCards()
     {
         for (int i = 0; i < cardCount; i++)
         {
             GameObject newCard = Instantiate(card, transform);
             newCard.transform.position = startPos;
+            CardSelectScript newCardScript = newCard.GetComponent<CardSelectScript>();
+            newCardScript.cardInfo = DrawCard();
+            newCardScript.sendCard.AddListener(this.receiveCardInfo);
+            newCardScript.highLightcard.AddListener(cardDescriptor.UpdateDescriptionText);
             StartCoroutine(PositionCard(newCard, i));
             freeCards = cardCount;
         }
