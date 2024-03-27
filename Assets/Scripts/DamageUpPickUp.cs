@@ -4,10 +4,8 @@ using UnityEngine;
 
 public class DamageUpPickUp : MonoBehaviour
 {
-
     public bool isBuffed = false;
     public bool firstPickUp = false;
-    public GameObject tutorialText;
 
     void Start()
     {
@@ -25,16 +23,6 @@ public class DamageUpPickUp : MonoBehaviour
             isBuffed = true;
             gameObject.SetActive(false);
             playerBehaviour.increaseDamage();
-            if (firstPickUp == false)
-            {
-                DmgTutorial();
-            }
         }
-    }
-
-    public void DmgTutorial()
-    {
-        firstPickUp=true;
-
     }
 }

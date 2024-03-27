@@ -26,6 +26,7 @@ public class GameManager : MonoBehaviour
     public GameObject laps;
     public GameObject battery;
     public GameObject[] batteries;
+    public GameObject DmgTut;
 
     public GameObject rounds;
     private bool gameOver = false;
@@ -47,6 +48,7 @@ public class GameManager : MonoBehaviour
         ingameTimer.gameObject.SetActive(true);
         laps.gameObject.SetActive(true);
         battery.gameObject.SetActive(true);
+        DmgTut.gameObject.SetActive(false);
 
         if (gameManager != null && gameManager != this)
         {
@@ -154,6 +156,18 @@ public class GameManager : MonoBehaviour
             batteries[4].SetActive(false);
             batteries[5].SetActive(true);
         }
+    }
+
+    public void showDmgTut()
+    {
+        DmgTut.gameObject.SetActive(true);
+        DmgTutWait();
+    }
+
+    IEnumerator DmgTutWait()
+    {
+        yield return new WaitForSeconds(15);
+        DmgTut.gameObject.SetActive(false);
     }
 
     public void gameOverded()
