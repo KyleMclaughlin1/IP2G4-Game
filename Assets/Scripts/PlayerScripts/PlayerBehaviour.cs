@@ -12,6 +12,7 @@ public class PlayerBehaviour : MonoBehaviour
     void Start()
     {
         buffLight.SetActive(false);
+
     }
 
     void Update()
@@ -30,7 +31,7 @@ public class PlayerBehaviour : MonoBehaviour
         //if the player drops to 0 health, kill them
         if (GameManager.gameManager.playerHealth.Health <= 0)
         {
-            Destroy(gameObject);
+            GameManager.gameManager.gameOverded();
         }
     }
 

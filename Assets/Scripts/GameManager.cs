@@ -58,14 +58,6 @@ public class GameManager : MonoBehaviour
     public void Update()
     {
         // checks if the player has died
-        if (GameObject.FindWithTag("Player") == null )
-        {
-            // enables the game over screen ui
-            gameOverScreen.gameObject.SetActive(true);
-            // sets time to pause
-            Time.timeScale = 0f;
-            gameOver = true;
-        }
 
         //pause Game
         // checks if the player is not in the game over screen and has pressed "p"
@@ -100,6 +92,15 @@ public class GameManager : MonoBehaviour
         {
             survivedScreen();
         }
+    }
+
+    public void gameOverded()
+    {
+        // enables the game over screen ui
+        gameOverScreen.gameObject.SetActive(true);
+        // sets time to pause
+        Time.timeScale = 0f;
+        gameOver = true;
     }
 
     public void survivedScreen()
