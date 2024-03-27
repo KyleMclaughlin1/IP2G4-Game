@@ -4,7 +4,7 @@ using UnityEngine;
 
 public class HealthUpDrop : MonoBehaviour
 {
-    public bool firstPickup = false;
+    public bool firstHpPickup = false;
 
     void OnTriggerEnter(Collider c)
     {
@@ -15,11 +15,7 @@ public class HealthUpDrop : MonoBehaviour
             Debug.Log("picked up health");
             gameObject.SetActive(false);
             playerBehaviour.healthIncrease();
-            if (firstPickup == false)
-            {
-                firstPickup = true;
-                playerBehaviour.showHpTut();
-            }
+            playerBehaviour.showHpTut();
         }
     }
 }

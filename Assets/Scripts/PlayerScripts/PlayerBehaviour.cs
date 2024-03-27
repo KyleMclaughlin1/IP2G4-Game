@@ -10,12 +10,16 @@ public class PlayerBehaviour : MonoBehaviour
     public AudioSource BatteryAudioSource;
     public GameObject DmgTut;
     public GameObject hpTut;
+    public bool firstHpPickup;
+    public bool firstDmgPickup;
 
     void Start()
     {
         buffLight.SetActive(false);
         DmgTut.SetActive(false);
         hpTut.SetActive(false);
+        firstHpPickup = false;
+        firstDmgPickup = false;
     }
 
     void Update()
@@ -85,8 +89,13 @@ public class PlayerBehaviour : MonoBehaviour
 
     public void showDmgTut()
     {
-        DmgTut.gameObject.SetActive(true);
-        StartCoroutine(dmgTutWait());
+        if (firstDmgPickup == false)
+        {
+            firstDmgPickup = true;
+            DmgTut.gameObject.SetActive(true);
+            StartCoroutine(dmgTutWait());
+        }
+
     }
 
     IEnumerator dmgTutWait()
@@ -97,8 +106,13 @@ public class PlayerBehaviour : MonoBehaviour
 
     public void showHpTut()
     {
-        hpTut.gameObject.SetActive(true);
-        StartCoroutine(hpTutWait());
+        if(firstHpPickup == false)
+        {
+            firstHpPickup = true;
+            hpTut.gameObject.SetActive(true);
+            StartCoroutine(hpTutWait());
+        }
+
     }
 
     IEnumerator hpTutWait()
