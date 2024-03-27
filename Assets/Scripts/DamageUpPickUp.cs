@@ -7,6 +7,7 @@ public class DamageUpPickUp : MonoBehaviour
     public bool isBuffed = false;
     public bool firstPickUp = false;
 
+
     void Start()
     {
         isBuffed = false;
@@ -23,6 +24,11 @@ public class DamageUpPickUp : MonoBehaviour
             isBuffed = true;
             gameObject.SetActive(false);
             playerBehaviour.increaseDamage();
+            if (firstPickUp == false)
+            {
+                firstPickUp = true;
+                playerBehaviour.showDmgTut();
+            }
         }
     }
 }

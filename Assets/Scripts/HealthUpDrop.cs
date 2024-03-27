@@ -4,6 +4,8 @@ using UnityEngine;
 
 public class HealthUpDrop : MonoBehaviour
 {
+    public bool firstPickup = false;
+
     void OnTriggerEnter(Collider c)
     {
         PlayerBehaviour playerBehaviour = c.GetComponent<PlayerBehaviour>();
@@ -13,6 +15,11 @@ public class HealthUpDrop : MonoBehaviour
             Debug.Log("picked up health");
             gameObject.SetActive(false);
             playerBehaviour.healthIncrease();
+            if (firstPickup == false)
+            {
+                firstPickup = true;
+                playerBehaviour.showHpTut();
+            }
         }
     }
 }

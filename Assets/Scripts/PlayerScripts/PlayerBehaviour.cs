@@ -8,11 +8,14 @@ public class PlayerBehaviour : MonoBehaviour
     public CannonControl bullet;
     public GameObject buffLight;
     public AudioSource BatteryAudioSource;
+    public GameObject DmgTut;
+    public GameObject hpTut;
 
     void Start()
     {
         buffLight.SetActive(false);
-
+        DmgTut.SetActive(false);
+        hpTut.SetActive(false);
     }
 
     void Update()
@@ -78,5 +81,29 @@ public class PlayerBehaviour : MonoBehaviour
     {
         PlayerHeal(1);
         BatteryAudioSource.Play();
+    }
+
+    public void showDmgTut()
+    {
+        DmgTut.gameObject.SetActive(true);
+        StartCoroutine(dmgTutWait());
+    }
+
+    IEnumerator dmgTutWait()
+    {
+        yield return new WaitForSeconds(15);
+        DmgTut.gameObject.SetActive(false);
+    }
+
+    public void showHpTut()
+    {
+        hpTut.gameObject.SetActive(true);
+        StartCoroutine(hpTutWait());
+    }
+
+    IEnumerator hpTutWait()
+    {
+        yield return new WaitForSeconds(15);
+        hpTut.gameObject.SetActive(false);
     }
 }

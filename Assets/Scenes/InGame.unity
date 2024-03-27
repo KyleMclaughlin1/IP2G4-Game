@@ -16813,6 +16813,8 @@ MonoBehaviour:
   bullet: {fileID: 117457913}
   buffLight: {fileID: 1584431430}
   BatteryAudioSource: {fileID: 1922759977}
+  DmgTut: {fileID: 1853904861}
+  hpTut: {fileID: 1057416932}
 --- !u!54 &1504214242
 Rigidbody:
   m_ObjectHideFlags: 0
