@@ -12,6 +12,8 @@ public class cameraShake : MonoBehaviour
     private float Timer;
     private CinemachineBasicMultiChannelPerlin _cbmcp;
 
+    public GameObject MainCam;
+
     void Awake()
     {
         CinemachineVirtualCamera = GetComponent<CinemachineVirtualCamera>();
@@ -24,7 +26,6 @@ public class cameraShake : MonoBehaviour
 
     public void ShakeCamera()
     {
-        Vector3 originalPos = transform.localPosition;
 
         CinemachineBasicMultiChannelPerlin _cbmcp = CinemachineVirtualCamera.GetCinemachineComponent<CinemachineBasicMultiChannelPerlin>();
         _cbmcp.m_AmplitudeGain = ShakeIntensity;
@@ -38,6 +39,7 @@ public class cameraShake : MonoBehaviour
         _cbmcp.m_AmplitudeGain = 0f;
         Timer = 0f;
 
+        transform.position = MainCam.transform.position ;
     }
 
     void Update()
@@ -46,12 +48,13 @@ public class cameraShake : MonoBehaviour
         {
             ShakeCamera();
         }
-        else
+        if (Input.GetKeyUp(KeyCode.Space))
         {
             StopShake();
         }
 
-        if(Timer <= 0)
+
+            if (Timer <= 0)
         {
 
             Timer += Time.deltaTime;
