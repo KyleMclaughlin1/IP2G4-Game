@@ -72,13 +72,13 @@ public class TankMovement : MonoBehaviour
         {
             if (hit.transform.gameObject.tag == "road")
             {
-                Debug.Log("On road");
+                //Debug.Log("On road");
                 accelRate = 15f;
                 maxSpeed = 33f;
             }
             else
             {
-                Debug.Log("On floor");
+                //Debug.Log("On floor");
                 accelRate = 10f;
                 maxSpeed = 15f;
             }

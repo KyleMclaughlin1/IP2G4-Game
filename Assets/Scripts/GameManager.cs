@@ -8,8 +8,8 @@ using TMPro;
 public class GameManager : MonoBehaviour
 {
     public static GameManager gameManager {  get; private set; }
-   
 
+    [field: Header("Health")]
     public HealthSystem playerHealth = new HealthSystem(10, 10);
 
     [field: Header("Menus")]
@@ -24,6 +24,8 @@ public class GameManager : MonoBehaviour
     public TextMeshProUGUI levelTimerUi;
     public GameObject ingameTimer;
     public GameObject laps;
+    public GameObject battery;
+    public GameObject[] batteries;
 
     public GameObject rounds;
     private bool gameOver = false;
@@ -44,6 +46,7 @@ public class GameManager : MonoBehaviour
         rounds.gameObject.SetActive(true);
         ingameTimer.gameObject.SetActive(true);
         laps.gameObject.SetActive(true);
+        battery.gameObject.SetActive(true);
 
         if (gameManager != null && gameManager != this)
         {
@@ -53,6 +56,7 @@ public class GameManager : MonoBehaviour
         {
             gameManager = this;
         }
+
     }
 
     public void Update()
@@ -73,9 +77,10 @@ public class GameManager : MonoBehaviour
             rounds.gameObject.SetActive(false);
             ingameTimer.gameObject.SetActive(false);
             laps.gameObject.SetActive(false);
+            battery.gameObject.SetActive(false);
 
             //sets time to pause
-            Time.timeScale = 0f;           
+            Time.timeScale = 0f;
         }
 
         if (!isPaused)
@@ -86,11 +91,68 @@ public class GameManager : MonoBehaviour
             Time.timeScale = 1f;
             ingameTimer.gameObject.SetActive(true);
             laps.gameObject.SetActive(true);
+            battery.gameObject.SetActive(true);
         }
 
-        if (levelTime <= 0 )
+        if (levelTime <= 0)
         {
             survivedScreen();
+        }
+
+        if (playerHealth.Health == 10)
+        {
+            batteries[0].SetActive(true);
+            batteries[1].SetActive(false);
+            batteries[2].SetActive(false);
+            batteries[3].SetActive(false);
+            batteries[4].SetActive(false);
+            batteries[5].SetActive(false);
+
+        }
+        if (playerHealth.Health <= 8)
+        {
+            batteries[0].SetActive(false);
+            batteries[1].SetActive(true);
+            batteries[2].SetActive(false);
+            batteries[3].SetActive(false);
+            batteries[4].SetActive(false);
+            batteries[5].SetActive(false);
+        }
+        if (playerHealth.Health <= 6)
+        {
+            batteries[0].SetActive(false);
+            batteries[1].SetActive(false);
+            batteries[2].SetActive(true);
+            batteries[3].SetActive(false);
+            batteries[4].SetActive(false);
+            batteries[5].SetActive(false);
+        }
+        if (playerHealth.Health <= 4)
+        {
+            batteries[0].SetActive(false);
+            batteries[1].SetActive(false);
+            batteries[2].SetActive(false);
+            batteries[3].SetActive(true);
+            batteries[4].SetActive(false);
+            batteries[5].SetActive(false);
+        }
+        if (playerHealth.Health <= 2)
+        {
+            batteries[0].SetActive(false);
+            batteries[1].SetActive(false);
+            batteries[2].SetActive(false);
+            batteries[3].SetActive(false);
+            batteries[4].SetActive(true);
+            batteries[5].SetActive(false);
+        }
+        if (playerHealth.Health <= 0)
+        {
+            batteries[0].SetActive(false);
+            batteries[1].SetActive(false);
+            batteries[2].SetActive(false);
+            batteries[3].SetActive(false);
+            batteries[4].SetActive(false);
+            batteries[5].SetActive(true);
         }
     }
 
