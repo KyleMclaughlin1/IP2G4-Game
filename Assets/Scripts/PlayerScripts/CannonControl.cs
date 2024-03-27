@@ -28,6 +28,8 @@ public class CannonControl : MonoBehaviour
 
     public AudioSource shootingAudioSource;
 
+    public Animator TankShot;
+
     void start()
     {
         shootingAudioSource = GetComponent<AudioSource>();
@@ -76,7 +78,7 @@ public class CannonControl : MonoBehaviour
                         newBullet.GetComponent<BulletBehaviour>().bulletDamage *= bulletDamageMultiplier;
                         //If the chosen bullet has the bullet behaviour script, multiply its damage by the tanks
                     }
-
+                    TankShot.SetTrigger("Shoot");
 
 
                     fireTimer = fireRate;
@@ -119,7 +121,7 @@ public class CannonControl : MonoBehaviour
                         newBullet.GetComponent<BulletBehaviour>().bulletDamage *= bulletDamageMultiplier;
                         //If the chosen bullet has the bullet behaviour script, multiply its damage by the tanks
                     }
-
+                    TankShot.SetTrigger("Shoot");
 
 
                     fireTimer = fireRate;

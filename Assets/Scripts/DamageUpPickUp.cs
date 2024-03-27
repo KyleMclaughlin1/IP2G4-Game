@@ -6,10 +6,13 @@ public class DamageUpPickUp : MonoBehaviour
 {
 
     public bool isBuffed = false;
+    public bool firstPickUp = false;
+    public GameObject tutorialText;
 
     void Start()
     {
         isBuffed = false;
+        firstPickUp = false;
     }
 
     void OnTriggerEnter(Collider c)
@@ -22,6 +25,16 @@ public class DamageUpPickUp : MonoBehaviour
             isBuffed = true;
             gameObject.SetActive(false);
             playerBehaviour.increaseDamage();
+            if (firstPickUp == false)
+            {
+                DmgTutorial();
+            }
         }
+    }
+
+    public void DmgTutorial()
+    {
+        firstPickUp=true;
+
     }
 }
