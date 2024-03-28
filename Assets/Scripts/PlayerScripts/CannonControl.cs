@@ -21,6 +21,11 @@ public class CannonControl : MonoBehaviour
     public int bulletDamageMultiplier = 1;
     [Tooltip("How long it takes for the cannon to fire again after firing")]
     public float fireRate = 1f;
+    [Tooltip("How many bullets are fired in a single shot")]
+    public int bulletCount = 1;
+
+    [Tooltip("How far apart the bullets spawn from each other if there are multiple")]
+    public float bulletSpread = 5f;
 
     private float fireTimer = 0f; //Timer for fire rate;
 
@@ -109,12 +114,19 @@ public class CannonControl : MonoBehaviour
                 if ((Input.GetKeyDown(KeyCode.Mouse0) || Input.GetKey(KeyCode.Mouse0) && cannonAuto) && (fireTimer <= 0f))
                 {
                     //Fire bullet on mouse click, or mouse hold if auto firing cannon is turned on 
-
+                for(int i = 0; i < bulletCount;++i)
+                {
                     GameObject newBullet = Instantiate(bullet, firePoint.transform.position, firePoint.transform.rotation);
+                    
                     newBullet.transform.Rotate(Vector3.forward * 90);
                     //face the bullet sideways instead of upwards
                     newBullet.transform.Rotate(Vector3.right * 90);
                     //fix the angle to work with the cannon defaulting upwards again
+                    if(bulletCount > 1){
+
+                    newBullet.transform.Translate(transform.right * ((bulletSpread * ((float)i + 1)) - 10), Space.Self); //Shift bullet forward if spawning multiple
+                    }
+
                     shootingAudioSource.Play();
                     if (newBullet.GetComponent<BulletBehaviour>())
                     {
@@ -122,6 +134,7 @@ public class CannonControl : MonoBehaviour
                         //If the chosen bullet has the bullet behaviour script, multiply its damage by the tanks
                     }
                     TankShot.SetTrigger("Shoot");
+                }
 
 
                     fireTimer = fireRate;

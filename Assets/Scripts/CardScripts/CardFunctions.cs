@@ -12,6 +12,8 @@ public List<System.Action> functionList = new List<System.Action>();
 
 System.Action upgrade;
 
+public GameObject player;
+public GameObject playerCannon;
 
 
 public void Start(){
@@ -40,18 +42,28 @@ upgrade();
  
 public void AttackUp(){
 Debug.Log("Attackup triggered");
+
+playerCannon.GetComponent<CannonControl>().bulletDamageMultiplier += 1;
 }
 
 private void AttackRateUp(){
 Debug.Log("AttackRateUp triggered");
+
+playerCannon.GetComponent<CannonControl>().fireRate /= 2;
+
 }
 
 private void DoubleShot(){
 Debug.Log("DoubleShot triggered");
+
+playerCannon.GetComponent<CannonControl>().bulletCount += 1;
 }
 
 private void RapidFire(){
 Debug.Log("RapidFire triggered");
+
+playerCannon.GetComponent<CannonControl>().cannonAuto = true;
+
 }
 
 

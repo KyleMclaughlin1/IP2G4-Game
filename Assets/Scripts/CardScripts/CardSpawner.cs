@@ -96,7 +96,10 @@ return drawnCard;
     public void receiveCardInfo(CardClass cardInfo)
     {
         Debug.Log("Event worked " + cardInfo.cardName);
-        CardFunctions CardEff = GetComponent<CardFunctions>();
+
+        GameObject gameManager = GameObject.Find("GameManager");
+
+        CardFunctions CardEff = gameManager.GetComponent<CardFunctions>();
         CardEff.cardFunc = cardInfo.CardEffect;
         CardEff.runCardFunc();
     }
