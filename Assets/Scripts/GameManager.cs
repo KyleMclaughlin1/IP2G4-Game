@@ -85,7 +85,7 @@ public class GameManager : MonoBehaviour
             Time.timeScale = 0f;
         }
 
-        if (!isPaused)
+        if (!isPaused && !gameOver)
         {
             pauseMenu.gameObject.SetActive(false);
             rounds.gameObject.SetActive(true);
