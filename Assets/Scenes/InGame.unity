@@ -1459,6 +1459,8 @@ MonoBehaviour:
   cannonAuto: 0
   bulletDamageMultiplier: 1
   fireRate: 0.25
+  bulletCount: 1
+  bulletSpread: 5
   shootingAudioSource: {fileID: 117457914}
   TankShot: {fileID: 1129279159}
 --- !u!82 &117457914
@@ -5802,6 +5804,7 @@ GameObject:
   - component: {fileID: 456316099}
   - component: {fileID: 456316100}
   - component: {fileID: 456316101}
+  - component: {fileID: 456316102}
   m_Layer: 0
   m_Name: GameManager
   m_TagString: Untagged
@@ -6033,6 +6036,21 @@ MonoBehaviour:
   checkPointList: []
   trackLap: 1
   lapText: {fileID: 1048742795}
+--- !u!114 &456316102
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 456316096}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 0bfddeda2c8a49b4f8944539723ab9bb, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  cardFunc: 0
+  player: {fileID: 1504214240}
+  playerCannon: {fileID: 117457911}
 --- !u!1 &464603083
 GameObject:
   m_ObjectHideFlags: 0
@@ -16978,6 +16996,8 @@ MonoBehaviour:
   BatteryAudioSource: {fileID: 1922759977}
   DmgTut: {fileID: 1853904861}
   hpTut: {fileID: 1057416932}
+  firstHpPickup: 0
+  firstDmgPickup: 0
 --- !u!54 &1504214242
 Rigidbody:
   m_ObjectHideFlags: 0
