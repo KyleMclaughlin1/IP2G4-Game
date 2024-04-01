@@ -28,10 +28,12 @@ public class BulletBehaviour : MonoBehaviour
     {
         if (!other.gameObject.CompareTag("Player"))
         {
-                //Instantiate and store in a temporary variable
-        GameObject bulletFX = Instantiate(hitAnim, this.transform.position, this.transform.rotation);
+            transform.rotation = Quaternion.identity;
 
-        Destroy(gameObject);
+                //Instantiate and store in a temporary variable
+            GameObject bulletFX = Instantiate(hitAnim, this.transform.position, this.transform.rotation);
+
+             Destroy(gameObject);
         }
     }
 }

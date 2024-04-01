@@ -30,13 +30,13 @@ Transform:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 4058033927468218710}
   serializedVersion: 2
-  m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
+  m_LocalRotation: {x: 0.54167527, y: -0.54167527, z: -0.45451948, w: 0.45451948}
   m_LocalPosition: {x: 0, y: 0, z: 0}
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_ConstrainProportionsScale: 0
   m_Children: []
   m_Father: {fileID: 0}
-  m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
+  m_LocalEulerAnglesHint: {x: 0, y: -100, z: -90}
 --- !u!33 &2023228941113904541
 MeshFilter:
   m_ObjectHideFlags: 0
@@ -130,7 +130,7 @@ Rigidbody:
     m_Bits: 0
   m_ImplicitCom: 1
   m_ImplicitTensor: 1
-  m_UseGravity: 1
+  m_UseGravity: 0
   m_IsKinematic: 0
   m_Interpolate: 0
   m_Constraints: 112
@@ -151,7 +151,7 @@ MonoBehaviour:
   bulletSpeed: 50
   bulletLife: 2
   bulletDamage: 1
-  hitAnim: {fileID: 7280834711301070749, guid: 61bf161280ea31947b96ca62be978d23, type: 3}
+  hitAnim: {fileID: 8695327327993097499, guid: 61bf161280ea31947b96ca62be978d23, type: 3}
 --- !u!108 &1549720782290055958
 Light:
   m_ObjectHideFlags: 0
