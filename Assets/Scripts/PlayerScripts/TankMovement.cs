@@ -34,6 +34,7 @@ public class TankMovement : MonoBehaviour
 
     [Tooltip("Object reference to dust effect")]
     public GameObject dustObject;
+    public GameObject slowDustObject;
 
     [Header("Input")]
     [Tooltip("What range to consider input from a input axis as no input (some controllers may default to 0.1 instead of 0")] 
@@ -68,14 +69,22 @@ public class TankMovement : MonoBehaviour
 
         drivingAudio();
 
-        if (currentTankSpeed >= 10)
+        if (currentTankSpeed >= 20)
         {
             dustObject.SetActive(true);
+            slowDustObject.SetActive(false);
+        }
+        else if (currentTankSpeed >= 5)
+        {
+            slowDustObject.SetActive(true);
+            dustObject.SetActive(false);
         }
         else
         {
+            slowDustObject.SetActive(false);
             dustObject.SetActive(false);
         }
+
 
         if (Physics.Raycast(transform.position, -Vector3.up, out hit))
         {

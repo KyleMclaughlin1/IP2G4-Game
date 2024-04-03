@@ -32,7 +32,7 @@ Transform:
   m_GameObject: {fileID: 120287036186690057}
   serializedVersion: 2
   m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
-  m_LocalPosition: {x: 27.136, y: 0.76, z: 25.854}
+  m_LocalPosition: {x: 0, y: 0, z: 0}
   m_LocalScale: {x: 16, y: 8, z: 16}
   m_ConstrainProportionsScale: 1
   m_Children:
@@ -130,6 +130,7 @@ MonoBehaviour:
   healthUpDrop: {fileID: 6710687450591496088, guid: 0cbf5d7811f3a954c82260345cbce60f, type: 3}
   randomNum: 0
   dropPosition: {fileID: 3383931914709727808}
+  deathAnim: {fileID: 3841811701593929552, guid: 4904b83a12252134098ecc46f825a25b, type: 3}
 --- !u!114 &4090350518785185161
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -624,11 +625,11 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: -8679921383154817045, guid: f368eafb642750447bec48604b7f9e3b, type: 3}
       propertyPath: m_LocalPosition.x
-      value: -0.093
+      value: 0
       objectReference: {fileID: 0}
     - target: {fileID: -8679921383154817045, guid: f368eafb642750447bec48604b7f9e3b, type: 3}
       propertyPath: m_LocalPosition.y
-      value: -2.247
+      value: -2
       objectReference: {fileID: 0}
     - target: {fileID: -8679921383154817045, guid: f368eafb642750447bec48604b7f9e3b, type: 3}
       propertyPath: m_LocalPosition.z
@@ -665,6 +666,10 @@ PrefabInstance:
     - target: {fileID: 919132149155446097, guid: f368eafb642750447bec48604b7f9e3b, type: 3}
       propertyPath: m_Name
       value: Monster_BearRun
+      objectReference: {fileID: 0}
+    - target: {fileID: 919132149155446097, guid: f368eafb642750447bec48604b7f9e3b, type: 3}
+      propertyPath: m_IsActive
+      value: 1
       objectReference: {fileID: 0}
     m_RemovedComponents: []
     m_RemovedGameObjects: []

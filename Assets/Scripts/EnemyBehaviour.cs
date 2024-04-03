@@ -13,6 +13,7 @@ public class EnemyBehaviour : MonoBehaviour
     public GameObject healthUpDrop;
     public float randomNum;
     public GameObject dropPosition;
+    public GameObject deathAnim;
     
     void Awake(){
          healthSystem = new HealthSystem(startHealth, startHealth);
@@ -25,6 +26,7 @@ public class EnemyBehaviour : MonoBehaviour
 
         if(healthSystem.currentHealth <= 0)
         {
+            GameObject deadBear = Instantiate(deathAnim, this.transform.position, this.transform.rotation);
             Destroy(gameObject);
             dropBuff();
         }
