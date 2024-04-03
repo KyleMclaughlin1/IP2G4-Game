@@ -9,6 +9,7 @@ TagManager:
   - bullet
   - TankBody
   - road
+  - HitBox
   layers:
   - Default
   - TransparentFX
