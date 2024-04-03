@@ -2,6 +2,7 @@ using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
 using UnityEngine.SceneManagement;
+using UnityEngine.UI;
 
 public class MenuManager : MonoBehaviour
 {
@@ -9,6 +10,11 @@ public class MenuManager : MonoBehaviour
     public GameObject mainButtons;
     public GameObject settingsButtons;
     public GameObject howToPlayUi;
+    public GameObject[] cutSceneImages;
+    public GameObject cutscene;
+    public CanvasGroup[] uiGroup;
+    public bool fadedOut = false;
+    public int i = 0;
 
     void Start()
     {
@@ -16,6 +22,11 @@ public class MenuManager : MonoBehaviour
         settingsButtons.SetActive(false);
         // disables the how to play part of the menu so it dosn't overlap with the main menu
         howToPlayUi.SetActive(false);
+        cutscene.SetActive(false);
+        foreach (GameObject Images in cutSceneImages)
+        {
+            Images.SetActive(false);
+        }
     }
 
     // method for when the start button is pressed
@@ -80,5 +91,48 @@ public class MenuManager : MonoBehaviour
         mainButtons.gameObject.SetActive(false);
         settingsButtons.gameObject.SetActive(false);
         howToPlayUi.gameObject.SetActive(true);    
+    }
+
+    public void startCutscene()
+    {
+        mainButtons.SetActive(false);
+        settingsButtons.SetActive(false);
+        howToPlayUi.SetActive(false);
+        cutscene.SetActive(true);
+        playCutscene();
+    }
+
+    public void playCutscene()
+    {
+        StartCoroutine(cutsceneUpdate());
+    }
+
+    IEnumerator cutsceneUpdate()
+    {
+        foreach (GameObject scenes in cutSceneImages)
+        {
+            scenes.SetActive(true);
+            yield return new WaitForSeconds(3);
+            fadedOut = true;
+
+        }
+
+        startGame();
+    }
+
+    void Update()
+    {
+        if (fadedOut == true)
+        {
+            if (uiGroup[i].alpha < 1)
+            {
+                uiGroup[i].alpha += Time.deltaTime;
+                if (uiGroup[i].alpha >= 1)
+                {
+                    fadedOut = false;
+                    i++;
+                }
+            }
+        }
     }
 }
