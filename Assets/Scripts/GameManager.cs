@@ -27,8 +27,9 @@ public class GameManager : MonoBehaviour
     public GameObject battery;
     public GameObject[] batteries;
     public GameObject DmgTut;
+    public GameObject MoveTut;
+    public GameObject SurviveText;
 
-    public GameObject rounds;
     private bool gameOver = false;
 
     void Start()
@@ -44,11 +45,11 @@ public class GameManager : MonoBehaviour
         exitCheck.gameObject.SetActive(false);
         pauseSettingsManu.gameObject.SetActive(false);
         survivedMenu.gameObject.SetActive(false);
-        rounds.gameObject.SetActive(true);
         ingameTimer.gameObject.SetActive(true);
         laps.gameObject.SetActive(true);
         battery.gameObject.SetActive(true);
         DmgTut.gameObject.SetActive(false);
+        MoveTut.gameObject.SetActive(true);
 
         if (gameManager != null && gameManager != this)
         {
@@ -76,7 +77,6 @@ public class GameManager : MonoBehaviour
         {
             // enables the pause menu ui
             pauseMenu.gameObject.SetActive(true);
-            rounds.gameObject.SetActive(false);
             ingameTimer.gameObject.SetActive(false);
             laps.gameObject.SetActive(false);
             battery.gameObject.SetActive(false);
@@ -88,12 +88,18 @@ public class GameManager : MonoBehaviour
         if (!isPaused && !gameOver)
         {
             pauseMenu.gameObject.SetActive(false);
-            rounds.gameObject.SetActive(true);
             isPaused = false;
             Time.timeScale = 1f;
             ingameTimer.gameObject.SetActive(true);
             laps.gameObject.SetActive(true);
             battery.gameObject.SetActive(true);
+        }
+
+        if (levelTime <= 290)
+        {
+            MoveTut.gameObject.SetActive(false);
+            SurviveText.gameObject.SetActive(false);
+            ingameTimer.transform.position = SurviveText.transform.position;
         }
 
         if (levelTime <= 0)
