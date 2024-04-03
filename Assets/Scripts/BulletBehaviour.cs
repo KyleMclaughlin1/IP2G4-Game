@@ -14,6 +14,13 @@ public class BulletBehaviour : MonoBehaviour
     [Tooltip("Bullet hit animation")]
     public GameObject hitAnim;
 
+    public GameObject shootFX;
+
+    void awake()
+    {
+        GameObject ShootFX = Instantiate(shootFX, this.transform.position, this.transform.rotation);
+    }
+
     // Update is called once per frame
     void Update()
     {

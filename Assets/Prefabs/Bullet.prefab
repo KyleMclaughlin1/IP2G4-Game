@@ -152,6 +152,7 @@ MonoBehaviour:
   bulletLife: 2
   bulletDamage: 1
   hitAnim: {fileID: 8695327327993097499, guid: 61bf161280ea31947b96ca62be978d23, type: 3}
+  shootFX: {fileID: 1584597083787997998, guid: 5e3a59af8f4f95a46a8a3d7b0bd28594, type: 3}
 --- !u!108 &1549720782290055958
 Light:
   m_ObjectHideFlags: 0

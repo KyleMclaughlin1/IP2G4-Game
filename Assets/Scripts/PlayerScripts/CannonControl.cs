@@ -33,6 +33,10 @@ public class CannonControl : MonoBehaviour
 
     public AudioSource shootingAudioSource;
 
+    public GameObject ShootFX;
+
+    public float FXTimer = 0f;
+
     public Animator TankShot;
 
     void start()
@@ -72,12 +76,16 @@ public class CannonControl : MonoBehaviour
                 {
                     //Fire bullet on mouse click, or mouse hold if auto firing cannon is turned on 
 
+
                     GameObject newBullet = Instantiate(bullet, firePoint.transform.position, firePoint.transform.rotation);
                     newBullet.transform.Rotate(Vector3.forward * 90);
                     //face the bullet sideways instead of upwards
                     newBullet.transform.Rotate(Vector3.right * 90);
                     //fix the angle to work with the cannon defaulting upwards again
                     shootingAudioSource.Play();
+
+   
+
                     if (newBullet.GetComponent<BulletBehaviour>())
                     {
                         newBullet.GetComponent<BulletBehaviour>().bulletDamage *= bulletDamageMultiplier;
@@ -113,8 +121,11 @@ public class CannonControl : MonoBehaviour
 
                 if ((Input.GetKeyDown(KeyCode.Mouse0) || Input.GetKey(KeyCode.Mouse0) && cannonAuto) && (fireTimer <= 0f))
                 {
-                    //Fire bullet on mouse click, or mouse hold if auto firing cannon is turned on 
-                for(int i = 0; i < bulletCount;++i)
+                    //Fire bullet on mouse click, or mouse hold if auto firing cannon is turned on
+
+                    GameObject newShootFX = Instantiate(ShootFX, firePoint);
+
+                    for (int i = 0; i < bulletCount;++i)
                 {
                     GameObject newBullet = Instantiate(bullet, firePoint.transform.position, firePoint.transform.rotation);
                     
