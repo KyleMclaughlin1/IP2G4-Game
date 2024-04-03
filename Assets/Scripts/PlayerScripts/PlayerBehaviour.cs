@@ -12,6 +12,11 @@ public class PlayerBehaviour : MonoBehaviour
     public GameObject hpTut;
     public bool firstHpPickup;
     public bool firstDmgPickup;
+    public bool playerHit = false;
+
+    private float hitTimer;
+    public float shakeTime;
+
 
     void Start()
     {
@@ -28,6 +33,7 @@ public class PlayerBehaviour : MonoBehaviour
         if (Input.GetKeyDown(KeyCode.G))
         {
             PlayerHit(2);
+   
         }
         //replace once pickups introduced
         if (Input.GetKeyDown(KeyCode.H))
@@ -40,6 +46,18 @@ public class PlayerBehaviour : MonoBehaviour
         {
             GameManager.gameManager.gameOverded();
         }
+
+        if (playerHit == true)
+        {
+
+            hitTimer += Time.deltaTime;
+ 
+        }                
+        if (hitTimer >= shakeTime)
+        {
+             playerHit = false;
+            hitTimer = 0;
+        }
     }
 
     private void PlayerHit(int Damage)
@@ -47,6 +65,9 @@ public class PlayerBehaviour : MonoBehaviour
         // use "DamageUnit" from Health System to damage player
         GameManager.gameManager.playerHealth.DamageUnit(Damage);
         Debug.Log(GameManager.gameManager.playerHealth.Health);
+
+        playerHit = true;
+
     }
 
     private void PlayerHeal(int Healing)

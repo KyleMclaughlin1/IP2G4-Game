@@ -6,13 +6,12 @@ using Cinemachine;
 public class cameraShake : MonoBehaviour
 {
     private CinemachineVirtualCamera CinemachineVirtualCamera;
-    private float ShakeIntensity = 1f;
-    private float ShakeTime = 0.2f;
+    public float ShakeIntensity = 1f;
 
-    private float Timer;
     private CinemachineBasicMultiChannelPerlin _cbmcp;
 
     public GameObject MainCam;
+    public PlayerBehaviour PB;
 
     void Awake()
     {
@@ -30,16 +29,14 @@ public class cameraShake : MonoBehaviour
         CinemachineBasicMultiChannelPerlin _cbmcp = CinemachineVirtualCamera.GetCinemachineComponent<CinemachineBasicMultiChannelPerlin>();
         _cbmcp.m_AmplitudeGain = ShakeIntensity;
 
-        Timer = ShakeTime;
     }
 
     void StopShake()
     {
         CinemachineBasicMultiChannelPerlin _cbmcp = CinemachineVirtualCamera.GetCinemachineComponent<CinemachineBasicMultiChannelPerlin>();
         _cbmcp.m_AmplitudeGain = 0f;
-        Timer = 0f;
 
-        transform.position = MainCam.transform.position ;
+        transform.position = MainCam.transform.position;
     }
 
     void Update()
@@ -52,17 +49,13 @@ public class cameraShake : MonoBehaviour
         {
             StopShake();
         }
-
-
-            if (Timer <= 0)
+        if (PB.playerHit == true)
         {
-
-            Timer += Time.deltaTime;
-
-            if (Timer >= 2f)
-            {
-                StopShake();
-            }
+            ShakeCamera();
+        }
+        if (!PB.playerHit)
+        {
+            StopShake();
         }
     }
 }
