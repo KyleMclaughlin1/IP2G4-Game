@@ -68,6 +68,15 @@ public class TankMovement : MonoBehaviour
 
         drivingAudio();
 
+        if (currentTankSpeed >= 10)
+        {
+            dustObject.SetActive(true);
+        }
+        else
+        {
+            dustObject.SetActive(false);
+        }
+
         if (Physics.Raycast(transform.position, -Vector3.up, out hit))
         {
             if (hit.transform.gameObject.tag == "road")
