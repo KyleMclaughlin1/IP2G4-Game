@@ -14763,7 +14763,7 @@ GameObject:
   - component: {fileID: 981529919}
   m_Layer: 0
   m_Name: HitBox
-  m_TagString: HitBox
+  m_TagString: hitbox
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
@@ -14816,7 +14816,7 @@ GameObject:
   - component: {fileID: 985211094}
   m_Layer: 0
   m_Name: HitBox
-  m_TagString: HitBox
+  m_TagString: hitbox
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
@@ -15449,6 +15449,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: fa73172c16e31d441af64a1f1cd7f5a0, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  ShakeIntensity: 1
   MainCam: {fileID: 2002671912}
   PB: {fileID: 1504214241}
 --- !u!114 &1017438159
@@ -19526,7 +19527,7 @@ GameObject:
   - component: {fileID: 1305901967}
   m_Layer: 0
   m_Name: HitBox
-  m_TagString: HitBox
+  m_TagString: hitbox
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
