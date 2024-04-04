@@ -43,27 +43,38 @@ upgrade();
 public void AttackUp(){
 Debug.Log("Attackup triggered");
 
-playerCannon.GetComponent<CannonControl>().bulletDamageMultiplier += 1;
+CannonControl cannon = playerCannon.GetComponent<CannonControl>();
+
+cannon.bulletDamageMultiplier += 1f;
 }
 
 private void AttackRateUp(){
 Debug.Log("AttackRateUp triggered");
 
-playerCannon.GetComponent<CannonControl>().fireRate /= 2;
+
+CannonControl cannon = playerCannon.GetComponent<CannonControl>();
+
+cannon.fireRate /= 1.45f;
+cannon.bulletDamageMultiplier -= 0.2f;
 
 }
 
 private void DoubleShot(){
 Debug.Log("DoubleShot triggered");
 
-playerCannon.GetComponent<CannonControl>().bulletCount += 1;
+CannonControl cannon = playerCannon.GetComponent<CannonControl>();
+
+cannon.bulletCount += 1;
+cannon.bulletDamageMultiplier /= 1.25f;
 }
 
 private void RapidFire(){
 Debug.Log("RapidFire triggered");
 
-playerCannon.GetComponent<CannonControl>().cannonAuto = true;
+CannonControl cannon = playerCannon.GetComponent<CannonControl>();
 
+cannon.cannonAuto = true;
+cannon.bulletDamageMultiplier *= 1.25f;
 }
 
 

@@ -9,7 +9,7 @@ public class TankMovement : MonoBehaviour
     [Header("Speed")]
     [SerializeField]
     [Tooltip("How fast the tank is currently moving, not to be edited")]
-    private float tankSpeed = 0f;
+    internal float tankSpeed = 0f;
     [Tooltip("Max speed of the Tank")]
     public float maxSpeed = 1000f;
     [Tooltip("Acceleration of the Tank")]
@@ -40,7 +40,7 @@ public class TankMovement : MonoBehaviour
     [Tooltip("What range to consider input from a input axis as no input (some controllers may default to 0.1 instead of 0")] 
     public float axisDeadZone = 0.3f;
 
-    private Rigidbody rb; // Reference to RigidBody
+    internal Rigidbody rb; // Reference to RigidBody
 
     public AudioSource EngineAudioSource;
     public float minPitch;

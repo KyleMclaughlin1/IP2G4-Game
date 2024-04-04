@@ -18,7 +18,7 @@ public class CannonControl : MonoBehaviour
     [Tooltip("Whether cannon fires automatically or on button press")]
     public bool cannonAuto = false;
     [Tooltip("How much damage the bullet does (bullet damage is multiplied by this value")]
-    public int bulletDamageMultiplier = 1;
+    public float bulletDamageMultiplier = 1f;
     [Tooltip("How long it takes for the cannon to fire again after firing")]
     public float fireRate = 1f;
     [Tooltip("How many bullets are fired in a single shot")]
@@ -38,6 +38,8 @@ public class CannonControl : MonoBehaviour
     public float FXTimer = 0f;
 
     public Animator TankShot;
+
+    public TankMovement tankBody;
 
     void start()
     {
@@ -135,7 +137,7 @@ public class CannonControl : MonoBehaviour
                     //fix the angle to work with the cannon defaulting upwards again
                     if(bulletCount > 1){
 
-                    newBullet.transform.Translate(transform.right * ((bulletSpread * ((float)i + 1)) - 10), Space.Self); //Shift bullet forward if spawning multiple
+                    newBullet.transform.Translate(transform.right * ((bulletSpread * ((float)i + 1)) - 10), Space.World); //Shift bullet forward if spawning multiple
                     }
 
                     shootingAudioSource.Play();
@@ -143,6 +145,11 @@ public class CannonControl : MonoBehaviour
                     {
                         newBullet.GetComponent<BulletBehaviour>().bulletDamage *= bulletDamageMultiplier;
                         //If the chosen bullet has the bullet behaviour script, multiply its damage by the tanks
+                        newBullet.GetComponent<BulletBehaviour>().body.velocity = tankBody.rb.velocity;
+                        //Gives the bullet the tanks velocity, so its speed matches that of the tanks for consistent shots
+
+
+                        
                     }
                     TankShot.SetTrigger("Shoot");
                 }

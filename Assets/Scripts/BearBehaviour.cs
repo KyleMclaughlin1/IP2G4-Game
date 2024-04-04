@@ -50,6 +50,14 @@ public class BearBehaviour : EnemyBehaviour
         healthSystem.DamageUnit(Damage);
         bearAnim.SetTrigger("BeenHit");
     }
+
+
+        private void Hit(float Damage)
+    {
+        // use "DamageUnit" from Health System to damage player
+        healthSystem.DamageUnit((int)Damage);
+        bearAnim.SetTrigger("BeenHit");
+    }
     //collision enter function has a reference to this function, so unity forces me to copy paste this in unedited
 
     //More copy pasting, inheritence was probably a bad idea at this point but I don't want to turn back

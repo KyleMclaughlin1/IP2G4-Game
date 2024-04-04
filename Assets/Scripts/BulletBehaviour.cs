@@ -10,7 +10,7 @@ public class BulletBehaviour : MonoBehaviour
     [Tooltip("How long it takes for the bullet to be despawned")]
     public float bulletLife;
     [Tooltip("Bullet damage")]
-    public int bulletDamage = 1;
+    public float bulletDamage = 1;
     [Tooltip("Bullet hit animation")]
     public GameObject hitAnim;
 

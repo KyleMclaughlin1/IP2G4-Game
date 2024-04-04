@@ -37,6 +37,14 @@ public class EnemyBehaviour : MonoBehaviour
         // use "DamageUnit" from Health System to damage player
         healthSystem.DamageUnit(Damage);
     }
+    private void Hit(float Damage)
+    {
+        // use "DamageUnit" from Health System to damage player
+        healthSystem.DamageUnit((int)Damage);
+    }
+
+
+
 
     void OnCollisionEnter(Collision other)
     {
