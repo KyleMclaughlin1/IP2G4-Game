@@ -80,7 +80,7 @@ public class PlayerBehaviour : MonoBehaviour
     void OnCollisionEnter(Collision other)
     {
         // take damage if the player gats hit by an enemy
-        if (other.gameObject.CompareTag("enemy"))
+        if (other.gameObject.CompareTag("hitbox"))
         {
             PlayerHit(2);
             
