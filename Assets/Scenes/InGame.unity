@@ -8725,7 +8725,6 @@ Transform:
   m_ConstrainProportionsScale: 1
   m_Children:
   - {fileID: 1254811628}
-  - {fileID: 1422370026}
   m_Father: {fileID: 1504214244}
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
 --- !u!65 &542518138
@@ -12483,31 +12482,31 @@ PrefabInstance:
   serializedVersion: 2
   m_Modification:
     serializedVersion: 3
-    m_TransformParent: {fileID: 542518137}
+    m_TransformParent: {fileID: 1129279154}
     m_Modifications:
     - target: {fileID: -8679921383154817045, guid: cad94ac6c5056524f99d0386c5695fae, type: 3}
       propertyPath: m_LocalScale.x
-      value: 28.43283
+      value: 28.433546
       objectReference: {fileID: 0}
     - target: {fileID: -8679921383154817045, guid: cad94ac6c5056524f99d0386c5695fae, type: 3}
       propertyPath: m_LocalScale.y
-      value: 142.16417
+      value: 142.16772
       objectReference: {fileID: 0}
     - target: {fileID: -8679921383154817045, guid: cad94ac6c5056524f99d0386c5695fae, type: 3}
       propertyPath: m_LocalScale.z
-      value: 47.388046
+      value: 142.1677
       objectReference: {fileID: 0}
     - target: {fileID: -8679921383154817045, guid: cad94ac6c5056524f99d0386c5695fae, type: 3}
       propertyPath: m_LocalPosition.x
-      value: -0.04833349
+      value: -0.12
       objectReference: {fileID: 0}
     - target: {fileID: -8679921383154817045, guid: cad94ac6c5056524f99d0386c5695fae, type: 3}
       propertyPath: m_LocalPosition.y
-      value: -0.93475
+      value: -1.6847922
       objectReference: {fileID: 0}
     - target: {fileID: -8679921383154817045, guid: cad94ac6c5056524f99d0386c5695fae, type: 3}
       propertyPath: m_LocalPosition.z
-      value: 0.027000427
+      value: -0.413
       objectReference: {fileID: 0}
     - target: {fileID: -8679921383154817045, guid: cad94ac6c5056524f99d0386c5695fae, type: 3}
       propertyPath: m_LocalRotation.w
@@ -17390,6 +17389,7 @@ Transform:
   m_ConstrainProportionsScale: 1
   m_Children:
   - {fileID: 1584431431}
+  - {fileID: 1422370026}
   m_Father: {fileID: 117457912}
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
 --- !u!65 &1129279155
