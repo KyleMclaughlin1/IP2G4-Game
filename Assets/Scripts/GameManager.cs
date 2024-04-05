@@ -8,8 +8,8 @@ using TMPro;
 public class GameManager : MonoBehaviour
 {
     public static GameManager gameManager {  get; private set; }
-   
 
+    [field: Header("Health")]
     public HealthSystem playerHealth = new HealthSystem(10, 10);
 
     [field: Header("Menus")]
@@ -24,8 +24,12 @@ public class GameManager : MonoBehaviour
     public TextMeshProUGUI levelTimerUi;
     public GameObject ingameTimer;
     public GameObject laps;
+    public GameObject battery;
+    public GameObject[] batteries;
+    public GameObject DmgTut;
+    public GameObject MoveTut;
+    public GameObject SurviveText;
 
-    public GameObject rounds;
     private bool gameOver = false;
 
     void Start()
@@ -41,9 +45,11 @@ public class GameManager : MonoBehaviour
         exitCheck.gameObject.SetActive(false);
         pauseSettingsManu.gameObject.SetActive(false);
         survivedMenu.gameObject.SetActive(false);
-        rounds.gameObject.SetActive(true);
         ingameTimer.gameObject.SetActive(true);
         laps.gameObject.SetActive(true);
+        battery.gameObject.SetActive(true);
+        DmgTut.gameObject.SetActive(false);
+        MoveTut.gameObject.SetActive(true);
 
         if (gameManager != null && gameManager != this)
         {
@@ -53,19 +59,12 @@ public class GameManager : MonoBehaviour
         {
             gameManager = this;
         }
+
     }
 
     public void Update()
     {
         // checks if the player has died
-        if (GameObject.FindWithTag("Player") == null )
-        {
-            // enables the game over screen ui
-            gameOverScreen.gameObject.SetActive(true);
-            // sets time to pause
-            Time.timeScale = 0f;
-            gameOver = true;
-        }
 
         //pause Game
         // checks if the player is not in the game over screen and has pressed "p"
@@ -78,28 +77,112 @@ public class GameManager : MonoBehaviour
         {
             // enables the pause menu ui
             pauseMenu.gameObject.SetActive(true);
-            rounds.gameObject.SetActive(false);
             ingameTimer.gameObject.SetActive(false);
             laps.gameObject.SetActive(false);
+            battery.gameObject.SetActive(false);
 
             //sets time to pause
-            Time.timeScale = 0f;           
+            Time.timeScale = 0f;
         }
 
-        if (!isPaused)
+        if (!isPaused && !gameOver)
         {
             pauseMenu.gameObject.SetActive(false);
-            rounds.gameObject.SetActive(true);
             isPaused = false;
             Time.timeScale = 1f;
             ingameTimer.gameObject.SetActive(true);
             laps.gameObject.SetActive(true);
+            battery.gameObject.SetActive(true);
         }
 
-        if (levelTime <= 0 )
+        if (levelTime <= 290)
+        {
+            MoveTut.gameObject.SetActive(false);
+            SurviveText.gameObject.SetActive(false);
+            ingameTimer.transform.position = SurviveText.transform.position;
+        }
+
+        if (levelTime <= 0)
         {
             survivedScreen();
         }
+
+        if (playerHealth.Health == 10)
+        {
+            batteries[0].SetActive(true);
+            batteries[1].SetActive(false);
+            batteries[2].SetActive(false);
+            batteries[3].SetActive(false);
+            batteries[4].SetActive(false);
+            batteries[5].SetActive(false);
+
+        }
+        if (playerHealth.Health <= 8)
+        {
+            batteries[0].SetActive(false);
+            batteries[1].SetActive(true);
+            batteries[2].SetActive(false);
+            batteries[3].SetActive(false);
+            batteries[4].SetActive(false);
+            batteries[5].SetActive(false);
+        }
+        if (playerHealth.Health <= 6)
+        {
+            batteries[0].SetActive(false);
+            batteries[1].SetActive(false);
+            batteries[2].SetActive(true);
+            batteries[3].SetActive(false);
+            batteries[4].SetActive(false);
+            batteries[5].SetActive(false);
+        }
+        if (playerHealth.Health <= 4)
+        {
+            batteries[0].SetActive(false);
+            batteries[1].SetActive(false);
+            batteries[2].SetActive(false);
+            batteries[3].SetActive(true);
+            batteries[4].SetActive(false);
+            batteries[5].SetActive(false);
+        }
+        if (playerHealth.Health <= 2)
+        {
+            batteries[0].SetActive(false);
+            batteries[1].SetActive(false);
+            batteries[2].SetActive(false);
+            batteries[3].SetActive(false);
+            batteries[4].SetActive(true);
+            batteries[5].SetActive(false);
+        }
+        if (playerHealth.Health <= 0)
+        {
+            batteries[0].SetActive(false);
+            batteries[1].SetActive(false);
+            batteries[2].SetActive(false);
+            batteries[3].SetActive(false);
+            batteries[4].SetActive(false);
+            batteries[5].SetActive(true);
+        }
+    }
+
+    public void showDmgTut()
+    {
+        DmgTut.gameObject.SetActive(true);
+        DmgTutWait();
+    }
+
+    IEnumerator DmgTutWait()
+    {
+        yield return new WaitForSeconds(15);
+        DmgTut.gameObject.SetActive(false);
+    }
+
+    public void gameOverded()
+    {
+        // enables the game over screen ui
+        gameOverScreen.gameObject.SetActive(true);
+        // sets time to pause
+        Time.timeScale = 0f;
+        gameOver = true;
     }
 
     public void survivedScreen()
@@ -194,9 +277,12 @@ public class GameManager : MonoBehaviour
     {
         while (levelTime > 0)
         {
-            levelTimerUi.text = levelTime.ToString();
-            yield return new WaitForSeconds(1f);
-            levelTime--;
+            if (gameOver == false)
+            {
+                levelTimerUi.text = levelTime.ToString();
+                yield return new WaitForSeconds(1f);
+                levelTime--;
+            }
         }
     }
 }

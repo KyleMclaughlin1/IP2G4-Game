@@ -10,9 +10,16 @@ public class BulletBehaviour : MonoBehaviour
     [Tooltip("How long it takes for the bullet to be despawned")]
     public float bulletLife;
     [Tooltip("Bullet damage")]
-    public int bulletDamage = 1;
+    public float bulletDamage = 1;
     [Tooltip("Bullet hit animation")]
     public GameObject hitAnim;
+
+    public GameObject shootFX;
+
+    void awake()
+    {
+        GameObject ShootFX = Instantiate(shootFX, this.transform.position, this.transform.rotation);
+    }
 
     // Update is called once per frame
     void Update()
@@ -28,10 +35,12 @@ public class BulletBehaviour : MonoBehaviour
     {
         if (!other.gameObject.CompareTag("Player"))
         {
-                //Instantiate and store in a temporary variable
-        GameObject bulletFX = Instantiate(hitAnim, this.transform.position, this.transform.rotation);
+            transform.rotation = Quaternion.identity;
 
-        Destroy(gameObject);
+                //Instantiate and store in a temporary variable
+            GameObject bulletFX = Instantiate(hitAnim, this.transform.position, this.transform.rotation);
+
+             Destroy(gameObject);
         }
     }
 }

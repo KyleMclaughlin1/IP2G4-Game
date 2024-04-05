@@ -4,7 +4,6 @@ using UnityEngine;
 
 public class DamageUpPickUp : MonoBehaviour
 {
-
     public bool isBuffed = false;
 
     void Start()
@@ -22,6 +21,7 @@ public class DamageUpPickUp : MonoBehaviour
             isBuffed = true;
             gameObject.SetActive(false);
             playerBehaviour.increaseDamage();
+            playerBehaviour.showDmgTut();
         }
     }
 }

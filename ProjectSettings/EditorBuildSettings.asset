@@ -11,4 +11,7 @@ EditorBuildSettings:
   - enabled: 1
     path: Assets/Scenes/InGame.unity
     guid: b8a1bb052ecd6d34ab7e5c207ecf2458
+  - enabled: 1
+    path: Assets/Scenes/CardScene.unity
+    guid: 7b0a08ce641e86a46bb68c4d389a9b43
   m_configObjects: {}

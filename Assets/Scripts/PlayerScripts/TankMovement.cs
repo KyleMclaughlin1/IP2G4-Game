@@ -9,9 +9,9 @@ public class TankMovement : MonoBehaviour
     [Header("Speed")]
     [SerializeField]
     [Tooltip("How fast the tank is currently moving, not to be edited")]
-    private float tankSpeed = 0f;
+    internal float tankSpeed = 0f;
     [Tooltip("Max speed of the Tank")]
-    public float maxSpeed = 60f;
+    public float maxSpeed = 1000f;
     [Tooltip("Acceleration of the Tank")]
     public float accelRate = 30f;
     [Tooltip("Decceleration when reverse input is pressed")]
@@ -34,12 +34,13 @@ public class TankMovement : MonoBehaviour
 
     [Tooltip("Object reference to dust effect")]
     public GameObject dustObject;
+    public GameObject slowDustObject;
 
     [Header("Input")]
     [Tooltip("What range to consider input from a input axis as no input (some controllers may default to 0.1 instead of 0")] 
     public float axisDeadZone = 0.3f;
 
-    private Rigidbody rb; // Reference to RigidBody
+    internal Rigidbody rb; // Reference to RigidBody
 
     public AudioSource EngineAudioSource;
     public float minPitch;
@@ -48,6 +49,7 @@ public class TankMovement : MonoBehaviour
     public float currentTankSpeed;
     public float minAccelSpeed = 1.5f;
     public float maxAccelSpeed = 30f;
+    RaycastHit hit;
 
     // Axis names are "Horizontal" and "Vertical"
 
@@ -55,6 +57,7 @@ public class TankMovement : MonoBehaviour
     {
         rb = GetComponent<Rigidbody>(); //Get reference to Rigidbody
         EngineAudioSource = GetComponent<AudioSource>();
+
     }
 
     // Update is called once per frame
@@ -66,7 +69,40 @@ public class TankMovement : MonoBehaviour
 
         drivingAudio();
 
-        if (x_Inpt > axisDeadZone || x_Inpt < -axisDeadZone) //If player is pressing left or right on the x input axis 
+        if (currentTankSpeed >= 20)
+        {
+            dustObject.SetActive(true);
+            slowDustObject.SetActive(false);
+        }
+        else if (currentTankSpeed >= 5)
+        {
+            slowDustObject.SetActive(true);
+            dustObject.SetActive(false);
+        }
+        else
+        {
+            slowDustObject.SetActive(false);
+            dustObject.SetActive(false);
+        }
+
+
+        if (Physics.Raycast(transform.position, -Vector3.up, out hit))
+        {
+            if (hit.transform.gameObject.tag == "road")
+            {
+                //Debug.Log("On road");
+                accelRate = 15f;
+                maxSpeed = 33f;
+            }
+            else
+            {
+                //Debug.Log("On floor");
+                accelRate = 10f;
+                maxSpeed = 15f;
+            }
+        }
+
+            if (x_Inpt > axisDeadZone || x_Inpt < -axisDeadZone) //If player is pressing left or right on the x input axis 
         {
             transform.Rotate(transform.up * x_Inpt * turnSpeed * Time.deltaTime);
             //Turn tank

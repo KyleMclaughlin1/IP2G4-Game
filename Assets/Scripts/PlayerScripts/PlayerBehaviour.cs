@@ -8,10 +8,23 @@ public class PlayerBehaviour : MonoBehaviour
     public CannonControl bullet;
     public GameObject buffLight;
     public AudioSource BatteryAudioSource;
+    public GameObject DmgTut;
+    public GameObject hpTut;
+    public bool firstHpPickup;
+    public bool firstDmgPickup;
+    public bool playerHit = false;
+
+    private float hitTimer;
+    public float shakeTime;
+
 
     void Start()
     {
         buffLight.SetActive(false);
+        DmgTut.SetActive(false);
+        hpTut.SetActive(false);
+        firstHpPickup = false;
+        firstDmgPickup = false;
     }
 
     void Update()
@@ -20,6 +33,7 @@ public class PlayerBehaviour : MonoBehaviour
         if (Input.GetKeyDown(KeyCode.G))
         {
             PlayerHit(2);
+   
         }
         //replace once pickups introduced
         if (Input.GetKeyDown(KeyCode.H))
@@ -30,7 +44,19 @@ public class PlayerBehaviour : MonoBehaviour
         //if the player drops to 0 health, kill them
         if (GameManager.gameManager.playerHealth.Health <= 0)
         {
-            Destroy(gameObject);
+            GameManager.gameManager.gameOverded();
+        }
+
+        if (playerHit == true)
+        {
+
+            hitTimer += Time.deltaTime;
+ 
+        }                
+        if (hitTimer >= shakeTime)
+        {
+             playerHit = false;
+            hitTimer = 0;
         }
     }
 
@@ -39,6 +65,9 @@ public class PlayerBehaviour : MonoBehaviour
         // use "DamageUnit" from Health System to damage player
         GameManager.gameManager.playerHealth.DamageUnit(Damage);
         Debug.Log(GameManager.gameManager.playerHealth.Health);
+
+        playerHit = true;
+
     }
 
     private void PlayerHeal(int Healing)
@@ -51,7 +80,7 @@ public class PlayerBehaviour : MonoBehaviour
     void OnCollisionEnter(Collision other)
     {
         // take damage if the player gats hit by an enemy
-        if (other.gameObject.CompareTag("enemy"))
+        if (other.gameObject.CompareTag("hitbox"))
         {
             PlayerHit(2);
             
@@ -77,5 +106,39 @@ public class PlayerBehaviour : MonoBehaviour
     {
         PlayerHeal(1);
         BatteryAudioSource.Play();
+    }
+
+    public void showDmgTut()
+    {
+        if (firstDmgPickup == false)
+        {
+            firstDmgPickup = true;
+            DmgTut.gameObject.SetActive(true);
+            StartCoroutine(dmgTutWait());
+        }
+
+    }
+
+    IEnumerator dmgTutWait()
+    {
+        yield return new WaitForSeconds(15);
+        DmgTut.gameObject.SetActive(false);
+    }
+
+    public void showHpTut()
+    {
+        if(firstHpPickup == false)
+        {
+            firstHpPickup = true;
+            hpTut.gameObject.SetActive(true);
+            StartCoroutine(hpTutWait());
+        }
+
+    }
+
+    IEnumerator hpTutWait()
+    {
+        yield return new WaitForSeconds(15);
+        hpTut.gameObject.SetActive(false);
     }
 }

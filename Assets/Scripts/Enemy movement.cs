@@ -17,7 +17,7 @@ public class Enemymovement : MonoBehaviour
     public float walkPointRange;
 
     public float sightrange;
-    private bool playerInRange;
+    public bool playerInRange;
 
     public void Awake()
     {

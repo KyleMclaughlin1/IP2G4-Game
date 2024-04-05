@@ -27,7 +27,11 @@ public class CardSelectScript : MonoBehaviour
     public float cardAccel = 0.05f;
     private float cardSpeedBoost = 0; // Tracks incease from cardAccel.
     private CardSpawner cardControl; // Link to card spawner script, for tracking card amount
-    public UnityEvent sendCard; // Event for sending card info
+    public UnityEvent<CardClass> sendCard; // Event for sending card info
+
+    public UnityEvent<string> highLightcard; // Event for showing card description on ui
+
+    public CardClass cardInfo;
 
 
     internal string cardDesc = "This card is useless"; // Temp variable to take the place of the cards description
@@ -39,7 +43,8 @@ public class CardSelectScript : MonoBehaviour
         storedScale = transform.localScale;
         startPos = transform.position;
         cardControl = GetComponentInParent<CardSpawner>();
-        sendCard.AddListener(cardControl.receiveCardInfo);
+       // sendCard.AddListener(cardControl.receiveCardInfo);
+       // ^ changed to add listener in cardspawner script when spawned
     }
 
     // Update is called once per frame
@@ -58,7 +63,7 @@ public class CardSelectScript : MonoBehaviour
         if (cardSelected)
         {
             transform.position = Vector3.Slerp(startPos, endPos, cardRemovalLerp);
-            cardRemovalTimer += Time.deltaTime + (cardSpeedBoost * Time.deltaTime);
+            cardRemovalTimer += Time.unscaledDeltaTime + (cardSpeedBoost * Time.unscaledDeltaTime);
             cardRemovalLerp = cardRemovalTimer / cardRemovalTime;
             cardSpeedBoost += cardAccel;
             if (cardRemovalLerp >= 1f)
@@ -68,8 +73,8 @@ public class CardSelectScript : MonoBehaviour
         }
         else if (cardRemoved)
         {
-            transform.position = Vector3.Slerp(startPos, ignoredEndPos, cardRemovalLerp);
-            cardRemovalTimer += Time.deltaTime + (cardSpeedBoost * Time.deltaTime);
+            transform.position = Vector3.Lerp(startPos, ignoredEndPos, cardRemovalLerp);
+            cardRemovalTimer += Time.unscaledDeltaTime + (cardSpeedBoost * Time.unscaledDeltaTime);
             cardRemovalLerp = cardRemovalTimer / cardRemovalTime;
             cardSpeedBoost += cardAccel;
         }
@@ -84,6 +89,7 @@ public class CardSelectScript : MonoBehaviour
         if (!cardSelected && transform.GetComponent<CardSelectScript>().enabled)
         {
             mouseHover = true;
+            highLightcard.Invoke(cardInfo.cardDesc);
             StartCoroutine(ScaleCard());
         }
     }
@@ -103,7 +109,7 @@ public class CardSelectScript : MonoBehaviour
 
     public void sendCardInfo()
     {
-        sendCard.Invoke();
+        sendCard.Invoke(cardInfo);
     }
 
 
@@ -118,7 +124,7 @@ public class CardSelectScript : MonoBehaviour
         if (mouseHover && transform.localScale.x < hoverScale)
         {
             transform.localScale = new Vector3(transform.localScale.x + 0.1f, transform.localScale.y + 0.1f, transform.localScale.z);
-            yield return new WaitForSeconds(0.1f);
+            yield return new WaitForSecondsRealtime(0.1f);
         }
         else
         {
@@ -133,7 +139,7 @@ public class CardSelectScript : MonoBehaviour
         if (!mouseHover)
         {
             transform.localScale = new Vector3(transform.localScale.x - 0.1f, transform.localScale.y - 0.1f, transform.localScale.z);
-            yield return new WaitForSeconds(0.1f);
+            yield return new WaitForSecondsRealtime(0.1f);
         }
         else
         {

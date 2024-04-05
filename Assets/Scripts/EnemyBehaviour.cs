@@ -13,6 +13,7 @@ public class EnemyBehaviour : MonoBehaviour
     public GameObject healthUpDrop;
     public float randomNum;
     public GameObject dropPosition;
+    public GameObject deathAnim;
     
     void Awake(){
          healthSystem = new HealthSystem(startHealth, startHealth);
@@ -25,6 +26,7 @@ public class EnemyBehaviour : MonoBehaviour
 
         if(healthSystem.currentHealth <= 0)
         {
+            GameObject deadBear = Instantiate(deathAnim, this.transform.position, this.transform.rotation);
             Destroy(gameObject);
             dropBuff();
         }
@@ -35,6 +37,14 @@ public class EnemyBehaviour : MonoBehaviour
         // use "DamageUnit" from Health System to damage player
         healthSystem.DamageUnit(Damage);
     }
+    private void Hit(float Damage)
+    {
+        // use "DamageUnit" from Health System to damage player
+        healthSystem.DamageUnit((int)Damage);
+    }
+
+
+
 
     void OnCollisionEnter(Collision other)
     {
