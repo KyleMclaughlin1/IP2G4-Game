@@ -104,7 +104,7 @@ public class PlayerBehaviour : MonoBehaviour
 
     public void healthIncrease()
     {
-        PlayerHeal(1);
+        PlayerHeal(2);
         BatteryAudioSource.Play();
     }
 

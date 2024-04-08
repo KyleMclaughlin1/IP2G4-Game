@@ -64,14 +64,13 @@ public class EnemyBehaviour : MonoBehaviour
 
     public void dropBuff()
     {
-        randomNum = Random.Range(1, 3);
-        Debug.Log(randomNum);
+        randomNum = Random.Range(1, 4);
         Vector3 position = dropPosition.transform.position;
-        if (randomNum == 2f)
+        if (randomNum == 2)
         {
             GameObject dmgUp = Instantiate(dmgBuffDrop, position, Quaternion.identity);
         }
-        if (randomNum == 3f)
+        if (randomNum == 3)
         {
             GameObject hpUp = Instantiate(healthUpDrop, position, Quaternion.identity);
         }
