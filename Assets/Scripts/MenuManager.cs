@@ -111,10 +111,18 @@ public class MenuManager : MonoBehaviour
     {
         foreach (GameObject scenes in cutSceneImages)
         {
-            scenes.SetActive(true);
-            yield return new WaitForSeconds(3);
-            fadedOut = true;
-
+            if (i <= 6)
+            {
+                scenes.SetActive(true);
+                yield return new WaitForSeconds(1.5f);
+                fadedOut = true;
+            }
+            else
+            {
+                scenes.SetActive(true);
+                yield return new WaitForSeconds(2.5f);
+                fadedOut = true;
+            }
         }
 
         startGame();

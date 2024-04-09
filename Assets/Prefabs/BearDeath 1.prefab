@@ -220,6 +220,22 @@ PrefabInstance:
       propertyPath: m_LocalEulerAnglesHint.z
       value: 0
       objectReference: {fileID: 0}
+    - target: {fileID: 7729120765490635433, guid: c47a6ad5e0991a84f8b16c2c189160b8, type: 3}
+      propertyPath: bearAnim
+      value: 
+      objectReference: {fileID: 4247782464158063196}
+    - target: {fileID: 7729120765490635433, guid: c47a6ad5e0991a84f8b16c2c189160b8, type: 3}
+      propertyPath: deathAnim
+      value: 
+      objectReference: {fileID: 3841811701593929552}
+    - target: {fileID: 7729120765490635433, guid: c47a6ad5e0991a84f8b16c2c189160b8, type: 3}
+      propertyPath: m_Enabled
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 7729120765490635433, guid: c47a6ad5e0991a84f8b16c2c189160b8, type: 3}
+      propertyPath: bearMovement
+      value: 
+      objectReference: {fileID: 0}
     m_RemovedComponents:
     - {fileID: 393069729346394941, guid: c47a6ad5e0991a84f8b16c2c189160b8, type: 3}
     - {fileID: 4090350518785185161, guid: c47a6ad5e0991a84f8b16c2c189160b8, type: 3}

@@ -95,7 +95,7 @@ public class GameManager : MonoBehaviour
             battery.gameObject.SetActive(true);
         }
 
-        if (levelTime <= 290)
+        if (levelTime <= 315)
         {
             MoveTut.gameObject.SetActive(false);
             SurviveText.gameObject.SetActive(false);
