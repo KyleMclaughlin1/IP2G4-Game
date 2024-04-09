@@ -10,6 +10,7 @@ TagManager:
   - TankBody
   - road
   - hitbox
+  - track
   layers:
   - Default
   - TransparentFX

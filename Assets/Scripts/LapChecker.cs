@@ -24,10 +24,20 @@ public class LapChecker : MonoBehaviour
     [Tooltip("Track gameobjects to switch out when laps completed")]
     public List<GameObject> tracks;
 
+    private GameObject[] trackConnections; // GameObjects that need turned on/off on track change
+
     private void Awake()
     {
       SetUpCheckPoints( tracks[0].transform.Find("CheckPoints") );
       changeLap = trackLap + trackChangeRequirements[0];
+      trackConnections = GameObject.FindGameObjectsWithTag("track");
+
+      foreach(GameObject obj in trackConnections){
+        obj.SetActive(false);
+
+      }
+
+      SetTrackEnabled(currentTrack + 1, true);
 
     }
 
@@ -62,11 +72,13 @@ public class LapChecker : MonoBehaviour
                 lapText.text = "Lap " + trackLap;
                 if(trackLap >= changeLap){
 
-                    tracks[currentTrack].SetActive(false);
+                    //tracks[currentTrack].SetActive(false);
+                    SetTrackEnabled(currentTrack + 1, false);
 
                     currentTrack += 1;
                     changeLap = trackLap + trackChangeRequirements[currentTrack];
-                    tracks[currentTrack].SetActive(true);
+                    //tracks[currentTrack].SetActive(true);
+                    SetTrackEnabled(currentTrack + 1, true);
 
                     checkPointList.Clear();
 
@@ -84,6 +96,14 @@ public class LapChecker : MonoBehaviour
         }
     }
 
+    private void SetTrackEnabled(int trackNum, bool isEnabled){
+        foreach(GameObject obj in trackConnections){
+        if (obj.name == "Track " + trackNum){
+            obj.SetActive(isEnabled);
+        }
+        }
+    }
+
 
     private void CardUpgrades(){
     GameManager gameManag = GetComponent<GameManager>();
@@ -97,7 +117,7 @@ public class LapChecker : MonoBehaviour
     // will fix later
     private void Update()
     {
-        if (currentTrack == 0)
+      /*  if (currentTrack == 0)
         {
             foreach(GameObject spawns1 in track1Spawns)
             { 
@@ -142,5 +162,6 @@ public class LapChecker : MonoBehaviour
                 spawns3.SetActive(true);
             }
         }
+        */
     }
 }
