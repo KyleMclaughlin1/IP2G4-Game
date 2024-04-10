@@ -6,7 +6,7 @@ public class EnemyBehaviour : MonoBehaviour
 {
     [SerializeField]
     [Tooltip("How much health the enemy starts with")]
-    private int startHealth = 5;
+    private int startHealth = 6;
     
     public HealthSystem healthSystem;
     public GameObject dmgBuffDrop;
@@ -14,9 +14,22 @@ public class EnemyBehaviour : MonoBehaviour
     public float randomNum;
     public GameObject dropPosition;
     public GameObject deathAnim;
-    
-    void Awake(){
-         healthSystem = new HealthSystem(startHealth, startHealth);
+    public LapChecker currentLap;
+
+    void Awake()
+    {
+        currentLap = GameObject.Find("GameManager").GetComponent<LapChecker>();
+
+        if (currentLap.trackLap == 2)
+        {
+            startHealth = 10;
+        }
+        else if (currentLap.trackLap >= 3)
+        {
+            startHealth = 14;
+        }
+
+        healthSystem = new HealthSystem(startHealth, startHealth);
     }
 
 
