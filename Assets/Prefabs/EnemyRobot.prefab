@@ -15,6 +15,7 @@ GameObject:
   - component: {fileID: 2982104754923800859}
   - component: {fileID: 3321478274714509427}
   - component: {fileID: 7729120765490635433}
+  - component: {fileID: 2747172051853255908}
   m_Layer: 0
   m_Name: EnemyRobot
   m_TagString: hitbox
@@ -167,6 +168,21 @@ MonoBehaviour:
   bearWalkSpeed: 20
   bearChaseSpeed: 42
   chaseWarmUp: 4
+--- !u!114 &2747172051853255908
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 120287036186690057}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 8fe8f98e8e1785a4f89234428293fdbf, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  player: {fileID: 0}
+  minDistance: 5
+  playerInRange: 0
 --- !u!1 &1911308694581926328
 GameObject:
   m_ObjectHideFlags: 0
