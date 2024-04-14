@@ -22,9 +22,13 @@ public class EnemyBehaviour : MonoBehaviour
 
         if (currentLap.trackLap == 2)
         {
+            startHealth = 8;
+        }
+        else if (currentLap.trackLap == 3)
+        {
             startHealth = 10;
         }
-        else if (currentLap.trackLap >= 3)
+        else if (currentLap.trackLap > 3)
         {
             startHealth = 14;
         }
