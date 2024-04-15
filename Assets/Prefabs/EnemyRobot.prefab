@@ -184,7 +184,7 @@ MonoBehaviour:
   maxDistance: 75
   minDistance: 5
   playerInRange: 0
-  EM: {fileID: 0}
+  EM: {fileID: 4090350518785185161}
   timeBetweenShots: 2
   timer: 0
   bullet: {fileID: 6668832513449993124, guid: 0c7ca67f5c4543044b5f78388ca4a27a, type: 3}

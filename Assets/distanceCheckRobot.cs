@@ -35,7 +35,7 @@ public class distanceCheckRobot : MonoBehaviour
         {
             playerInRange = true;
             timer = 0f;
-            shootPlayer();
+            StartCoroutine(shootPlayer());
 
             timer = timeBetweenShots;
 
@@ -49,7 +49,7 @@ public class distanceCheckRobot : MonoBehaviour
     public IEnumerator shootPlayer()
     {
         EM.enabled=(false);
-
+        Debug.Log(EM.enabled);
         GameObject newBullet = Instantiate(bullet, this.transform.position, this.transform.rotation);
 
         yield return new WaitForSeconds(2);
