@@ -58,9 +58,11 @@ public class PlayerBehaviour : MonoBehaviour
              playerHit = false;
             hitTimer = 0;
         }
+
+
     }
 
-    private void PlayerHit(int Damage)
+    public void PlayerHit(int Damage)
     {
         // use "DamageUnit" from Health System to damage player
         GameManager.gameManager.playerHealth.DamageUnit(Damage);
@@ -82,8 +84,7 @@ public class PlayerBehaviour : MonoBehaviour
         // take damage if the player gats hit by an enemy
         if (other.gameObject.CompareTag("hitbox"))
         {
-            PlayerHit(2);
-            
+            PlayerHit(2);   
         }
     }
 
@@ -141,4 +142,5 @@ public class PlayerBehaviour : MonoBehaviour
         yield return new WaitForSeconds(15);
         hpTut.gameObject.SetActive(false);
     }
+
 }

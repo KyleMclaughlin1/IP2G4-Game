@@ -18,7 +18,7 @@ GameObject:
   - component: {fileID: 2747172051853255908}
   m_Layer: 0
   m_Name: EnemyRobot
-  m_TagString: hitbox
+  m_TagString: enemy
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
@@ -181,8 +181,13 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   player: {fileID: 0}
+  maxDistance: 75
   minDistance: 5
   playerInRange: 0
+  EM: {fileID: 0}
+  timeBetweenShots: 2
+  timer: 0
+  bullet: {fileID: 6668832513449993124, guid: 0c7ca67f5c4543044b5f78388ca4a27a, type: 3}
 --- !u!1 &1911308694581926328
 GameObject:
   m_ObjectHideFlags: 0
