@@ -65,7 +65,8 @@ Debug.Log("DoubleShot triggered");
 CannonControl cannon = playerCannon.GetComponent<CannonControl>();
 
 cannon.bulletCount += 1;
-cannon.bulletDamageMultiplier /= 1.25f;
+//cannon.bulletDamageMultiplier /= 1.25f;
+//This upgrade seems to suck, no idea why so im removing the nerf for now (Ryan P)
 }
 
 private void RapidFire(){
