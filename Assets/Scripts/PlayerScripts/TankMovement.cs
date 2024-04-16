@@ -42,6 +42,12 @@ public class TankMovement : MonoBehaviour
 
     internal Rigidbody rb; // Reference to RigidBody
 
+    [Tooltip("Reference to animation component of lower half")]
+    public Animator treadAnim;
+
+
+
+
     public AudioSource EngineAudioSource;
     public float minPitch;
     public float maxPitch;
@@ -136,6 +142,15 @@ public class TankMovement : MonoBehaviour
 
         tankSpeed = Mathf.Clamp(tankSpeed, -15, maxSpeed);
         //Limit tank from exceeding max speed
+
+        //Setup Animation values
+        if(tankSpeed > 0){
+        treadAnim.SetFloat("TankSpeed", tankSpeed / 33f);
+         treadAnim.SetBool("IsReverse", false);
+        }else{
+            treadAnim.SetFloat("TankSpeed", tankSpeed / -33f);
+            treadAnim.SetBool("IsReverse", true);
+        }
 
         if(tankSpeed > minDustSpeed) //If tank is moving fast enough to spawn dust particles
         {
