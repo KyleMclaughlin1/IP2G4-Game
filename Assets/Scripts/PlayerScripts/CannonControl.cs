@@ -137,7 +137,15 @@ public class CannonControl : MonoBehaviour
                     //fix the angle to work with the cannon defaulting upwards again
                     if(bulletCount > 1){
 
-                    newBullet.transform.Translate(transform.right * ((bulletSpread * ((float)i + 1)) - 10), Space.World); //Shift bullet forward if spawning multiple
+                        
+                    if(bulletCount % 2 == 1){ // If bullet count is an odd number
+
+                    newBullet.transform.Translate(transform.right * ((bulletSpread * ((float)i)) - ((bulletCount / 2) * bulletSpread)), Space.World); //Shift bullet forward if spawning multiple
+                    }else{
+
+                       newBullet.transform.Translate(transform.right * ((bulletSpread * ((float)i + 0.5f)) - ((bulletCount / 2) * bulletSpread)), Space.World); //Shift bullet forward if spawning multiple
+
+                    }
                     }
 
                     shootingAudioSource.Play();

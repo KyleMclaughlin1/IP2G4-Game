@@ -4170,7 +4170,7 @@ MonoBehaviour:
   bulletDamageMultiplier: 1
   fireRate: 0.25
   bulletCount: 1
-  bulletSpread: 5
+  bulletSpread: 2.75
   shootingAudioSource: {fileID: 117457914}
   ShootFX: {fileID: 1584597083787997998, guid: 5e3a59af8f4f95a46a8a3d7b0bd28594, type: 3}
   FXTimer: 0
