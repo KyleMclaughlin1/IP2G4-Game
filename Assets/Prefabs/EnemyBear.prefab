@@ -205,6 +205,7 @@ MonoBehaviour:
   randomNum: 0
   dropPosition: {fileID: 3383931914709727808}
   deathAnim: {fileID: 3841811701593929552, guid: 4904b83a12252134098ecc46f825a25b, type: 3}
+  currentLap: {fileID: 0}
   bearAnim: {fileID: 2957749720972083007}
   bearMovement: {fileID: 4090350518785185161}
   bearWalkSpeed: 15
@@ -268,7 +269,7 @@ Transform:
   m_GameObject: {fileID: 8715034764247696670}
   serializedVersion: 2
   m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
-  m_LocalPosition: {x: 0, y: -0.387, z: 0}
+  m_LocalPosition: {x: 0, y: -0.387, z: 0.58}
   m_LocalScale: {x: 15, y: 50, z: 10}
   m_ConstrainProportionsScale: 0
   m_Children: []
