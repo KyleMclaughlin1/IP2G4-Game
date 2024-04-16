@@ -29,6 +29,7 @@ public class GameManager : MonoBehaviour
     public GameObject DmgTut;
     public GameObject MoveTut;
     public GameObject SurviveText;
+    public GameObject uiCanvas;
 
     private bool gameOver = false;
 
@@ -50,6 +51,7 @@ public class GameManager : MonoBehaviour
         battery.gameObject.SetActive(true);
         DmgTut.gameObject.SetActive(false);
         MoveTut.gameObject.SetActive(true);
+        uiCanvas.SetActive(true);
 
         if (gameManager != null && gameManager != this)
         {
@@ -71,6 +73,11 @@ public class GameManager : MonoBehaviour
         if (Input.GetKeyDown(KeyCode.P) && !gameOver)
         {
             isPaused = !isPaused;
+        }
+
+        if (Input.GetKeyDown(KeyCode.O) && !gameOver)
+        {
+            uiCanvas.SetActive(false);
         }
 
         if (isPaused)
@@ -284,5 +291,12 @@ public class GameManager : MonoBehaviour
                 levelTime--;
             }
         }
+    }
+
+    public void hudToggle()
+    {
+        ingameTimer.gameObject.SetActive(false);
+        laps.gameObject.SetActive(false);
+        battery.gameObject.SetActive(false);
     }
 }
