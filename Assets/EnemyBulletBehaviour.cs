@@ -31,5 +31,7 @@ public class EnemyBulletBehaviour : MonoBehaviour
         {
             Destroy(gameObject);
         }
+        else
+        Destroy(gameObject);
     }
 }

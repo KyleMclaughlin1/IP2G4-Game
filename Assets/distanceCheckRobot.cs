@@ -20,25 +20,28 @@ public class distanceCheckRobot : MonoBehaviour
 
     public GameObject bullet;
 
+    public GameObject firePoint;
+
+    public float distance;
+
     void Start()
     {
         player = GameObject.Find("Player").transform;
+
     }
 
     void Update()
     {
-        timer -= Time.deltaTime;
+        timer += Time.deltaTime;
 
-        float distance = Vector3.Distance(this.transform.position, player.position);
+        distance = Vector3.Distance(this.transform.position, player.position);
 
-        if (timer <= 0 && distance >= minDistance && distance <= maxDistance)
+        if (timer >= timeBetweenShots && distance >= minDistance && distance <= maxDistance)
         {
             playerInRange = true;
-            timer = 0f;
             StartCoroutine(shootPlayer());
 
-            timer = timeBetweenShots;
-
+            timer = 0f;
         }
         else
         {
@@ -50,9 +53,10 @@ public class distanceCheckRobot : MonoBehaviour
     {
         EM.enabled=(false);
         Debug.Log(EM.enabled);
-        GameObject newBullet = Instantiate(bullet, this.transform.position, this.transform.rotation);
+        GameObject newBullet = Instantiate(bullet, firePoint.transform.position, firePoint.transform.rotation);
 
         yield return new WaitForSeconds(2);
+
         EM.enabled = true;
     }
 }
