@@ -109,6 +109,9 @@ public class MenuManager : MonoBehaviour
 
     IEnumerator cutsceneUpdate()
     {
+        
+        Time.timeScale = 1f;
+
         foreach (GameObject scenes in cutSceneImages)
         {
             if (i <= 6)
