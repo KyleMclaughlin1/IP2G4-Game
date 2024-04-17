@@ -12,7 +12,7 @@ public class LapChecker : MonoBehaviour
 
     public int trackLap = 0;
     private int changeLap = 0;
-    private int currentTrack = 0;
+    public int currentTrack = 0;
     public GameObject track1Spawns;
     public GameObject track2Spawns;
     public GameObject track3Spawns;

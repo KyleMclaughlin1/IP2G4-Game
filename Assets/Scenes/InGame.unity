@@ -21023,21 +21023,24 @@ MonoBehaviour:
     - {fileID: 120287036186690057, guid: c47a6ad5e0991a84f8b16c2c189160b8, type: 3}
     - {fileID: 120287036186690057, guid: c47a6ad5e0991a84f8b16c2c189160b8, type: 3}
     - {fileID: 120287036186690057, guid: c47a6ad5e0991a84f8b16c2c189160b8, type: 3}
-  spawnPoints:
+  track1SpawnPoints:
   - {fileID: 1025866191}
   - {fileID: 758016439}
   - {fileID: 701364970}
   - {fileID: 366778542}
+  track2SpawnPoints:
   - {fileID: 697060800}
   - {fileID: 1076006380}
   - {fileID: 1642845071}
   - {fileID: 1546082746}
+  track3SpawnPoints:
   - {fileID: 1238393371}
   - {fileID: 1285337732}
   - {fileID: 37948934}
   - {fileID: 190688989}
   - {fileID: 1770519258}
   - {fileID: 1960849380}
+  track: {fileID: 456316101}
   timer: 0
   timeBetweenWaves: 45
 --- !u!114 &456316101
@@ -21054,6 +21057,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   checkPointList: []
   trackLap: 1
+  currentTrack: 0
   track1Spawns: {fileID: 1950350556}
   track2Spawns: {fileID: 1306898443}
   track3Spawns: {fileID: 1232625871}
