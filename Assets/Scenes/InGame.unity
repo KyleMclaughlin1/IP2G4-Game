@@ -20951,30 +20951,30 @@ MonoBehaviour:
   - monsterSpawn:
     - {fileID: 120287036186690057, guid: c47a6ad5e0991a84f8b16c2c189160b8, type: 3}
     - {fileID: 120287036186690057, guid: c47a6ad5e0991a84f8b16c2c189160b8, type: 3}
+    - {fileID: 1073782830}
     - {fileID: 120287036186690057, guid: c47a6ad5e0991a84f8b16c2c189160b8, type: 3}
     - {fileID: 120287036186690057, guid: c47a6ad5e0991a84f8b16c2c189160b8, type: 3}
-    - {fileID: 120287036186690057, guid: c47a6ad5e0991a84f8b16c2c189160b8, type: 3}
-    - {fileID: 120287036186690057, guid: c47a6ad5e0991a84f8b16c2c189160b8, type: 3}
-    - {fileID: 120287036186690057, guid: c47a6ad5e0991a84f8b16c2c189160b8, type: 3}
-    - {fileID: 120287036186690057, guid: c47a6ad5e0991a84f8b16c2c189160b8, type: 3}
-  - monsterSpawn:
-    - {fileID: 120287036186690057, guid: c47a6ad5e0991a84f8b16c2c189160b8, type: 3}
-    - {fileID: 120287036186690057, guid: c47a6ad5e0991a84f8b16c2c189160b8, type: 3}
-    - {fileID: 120287036186690057, guid: c47a6ad5e0991a84f8b16c2c189160b8, type: 3}
-    - {fileID: 120287036186690057, guid: c47a6ad5e0991a84f8b16c2c189160b8, type: 3}
-    - {fileID: 120287036186690057, guid: c47a6ad5e0991a84f8b16c2c189160b8, type: 3}
-    - {fileID: 120287036186690057, guid: c47a6ad5e0991a84f8b16c2c189160b8, type: 3}
-    - {fileID: 120287036186690057, guid: c47a6ad5e0991a84f8b16c2c189160b8, type: 3}
-    - {fileID: 120287036186690057, guid: c47a6ad5e0991a84f8b16c2c189160b8, type: 3}
+    - {fileID: 1073782830}
     - {fileID: 120287036186690057, guid: c47a6ad5e0991a84f8b16c2c189160b8, type: 3}
     - {fileID: 120287036186690057, guid: c47a6ad5e0991a84f8b16c2c189160b8, type: 3}
   - monsterSpawn:
     - {fileID: 120287036186690057, guid: c47a6ad5e0991a84f8b16c2c189160b8, type: 3}
     - {fileID: 120287036186690057, guid: c47a6ad5e0991a84f8b16c2c189160b8, type: 3}
+    - {fileID: 120287036186690057, guid: 1bd71d29505ab72429e82df0e1c51372, type: 3}
     - {fileID: 120287036186690057, guid: c47a6ad5e0991a84f8b16c2c189160b8, type: 3}
     - {fileID: 120287036186690057, guid: c47a6ad5e0991a84f8b16c2c189160b8, type: 3}
     - {fileID: 120287036186690057, guid: c47a6ad5e0991a84f8b16c2c189160b8, type: 3}
+    - {fileID: 120287036186690057, guid: 1bd71d29505ab72429e82df0e1c51372, type: 3}
     - {fileID: 120287036186690057, guid: c47a6ad5e0991a84f8b16c2c189160b8, type: 3}
+    - {fileID: 120287036186690057, guid: c47a6ad5e0991a84f8b16c2c189160b8, type: 3}
+    - {fileID: 120287036186690057, guid: 1bd71d29505ab72429e82df0e1c51372, type: 3}
+  - monsterSpawn:
+    - {fileID: 120287036186690057, guid: c47a6ad5e0991a84f8b16c2c189160b8, type: 3}
+    - {fileID: 120287036186690057, guid: c47a6ad5e0991a84f8b16c2c189160b8, type: 3}
+    - {fileID: 120287036186690057, guid: c47a6ad5e0991a84f8b16c2c189160b8, type: 3}
+    - {fileID: 120287036186690057, guid: 1bd71d29505ab72429e82df0e1c51372, type: 3}
+    - {fileID: 120287036186690057, guid: 1bd71d29505ab72429e82df0e1c51372, type: 3}
+    - {fileID: 120287036186690057, guid: 1bd71d29505ab72429e82df0e1c51372, type: 3}
     - {fileID: 120287036186690057, guid: c47a6ad5e0991a84f8b16c2c189160b8, type: 3}
     - {fileID: 120287036186690057, guid: c47a6ad5e0991a84f8b16c2c189160b8, type: 3}
     - {fileID: 120287036186690057, guid: c47a6ad5e0991a84f8b16c2c189160b8, type: 3}
@@ -46331,6 +46331,11 @@ Transform:
   m_CorrespondingSourceObject: {fileID: -8679921383154817045, guid: 3bcb8a8091d34af4c9577c0f2334753c, type: 3}
   m_PrefabInstance: {fileID: 1073260512}
   m_PrefabAsset: {fileID: 0}
+--- !u!1 &1073782830 stripped
+GameObject:
+  m_CorrespondingSourceObject: {fileID: 120287036186690057, guid: 1bd71d29505ab72429e82df0e1c51372, type: 3}
+  m_PrefabInstance: {fileID: 679407109}
+  m_PrefabAsset: {fileID: 0}
 --- !u!1001 &1074280645
 PrefabInstance:
   m_ObjectHideFlags: 0
@@ -60635,7 +60640,7 @@ Transform:
   m_GameObject: {fileID: 1478211860}
   serializedVersion: 2
   m_LocalRotation: {x: 0, y: 1, z: 0, w: 0}
-  m_LocalPosition: {x: 0, y: 2.78, z: 0}
+  m_LocalPosition: {x: 0, y: 0.74, z: 0}
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_ConstrainProportionsScale: 0
   m_Children: []
