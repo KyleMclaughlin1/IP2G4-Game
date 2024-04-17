@@ -13,7 +13,7 @@ MonoBehaviour:
   m_Name: DoubleShot
   m_EditorClassIdentifier: 
   cardName: Double fire
-  cardSprite: {fileID: 21300000, guid: 057cabfba908c6742bdc4c88ab4f21af, type: 3}
+  cardSprite: {fileID: 21300000, guid: e7afcc7c96ae7d9478ebd1badf2f8fc7, type: 3}
   cardDesc: Cannon fires an extra bullet.
   CardEffect: 2
   oneTimeUse: 0

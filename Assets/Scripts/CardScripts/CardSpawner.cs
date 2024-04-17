@@ -84,10 +84,17 @@ return drawnCard;
         {
             GameObject newCard = Instantiate(card, transform);
             newCard.transform.position = startPos;
+
+            SpriteRenderer cardSprite = newCard.GetComponentInChildren<SpriteRenderer>();
+
+
             CardSelectScript newCardScript = newCard.GetComponent<CardSelectScript>();
             newCardScript.cardInfo = DrawCard();
             newCardScript.sendCard.AddListener(this.receiveCardInfo);
             newCardScript.highLightcard.AddListener(cardDescriptor.UpdateDescriptionText);
+
+            cardSprite.sprite = newCardScript.cardInfo.cardSprite;
+
             StartCoroutine(PositionCard(newCard, i));
             freeCards = cardCount;
         }

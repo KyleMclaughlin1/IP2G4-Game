@@ -13,7 +13,7 @@ MonoBehaviour:
   m_Name: RapidFire
   m_EditorClassIdentifier: 
   cardName: AutoFire
-  cardSprite: {fileID: 21300000, guid: 057cabfba908c6742bdc4c88ab4f21af, type: 3}
+  cardSprite: {fileID: 21300000, guid: cde3c1f4d55d47b459570cc6f1821394, type: 3}
   cardDesc: Hold down fire to shoot automatically.
   CardEffect: 3
   oneTimeUse: 1

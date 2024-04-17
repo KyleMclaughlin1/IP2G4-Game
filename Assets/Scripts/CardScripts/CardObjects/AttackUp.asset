@@ -13,7 +13,7 @@ MonoBehaviour:
   m_Name: AttackUp
   m_EditorClassIdentifier: 
   cardName: Attack Boost
-  cardSprite: {fileID: 21300000, guid: 057cabfba908c6742bdc4c88ab4f21af, type: 3}
+  cardSprite: {fileID: 21300000, guid: 0ad2bc64f1018c34eb404d6d75074fac, type: 3}
   cardDesc: Increase cannon damage by 1.
   CardEffect: 0
   oneTimeUse: 0
