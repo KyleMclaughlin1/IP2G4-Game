@@ -26,11 +26,11 @@ public class EnemyBehaviour : MonoBehaviour
         }
         else if (currentLap.trackLap == 3)
         {
-            startHealth = 10;
+            startHealth = 12;
         }
         else if (currentLap.trackLap > 3)
         {
-            startHealth = 14;
+            startHealth = 18;
         }
 
         healthSystem = new HealthSystem(startHealth, startHealth);
